@@ -1,0 +1,23 @@
+.secao-sobre {
+    background-color: #ffffff;
+    padding: 25px;
+    border: 1px solid #cfcfcf;
+    margin-bottom: 30px;
+}
+
+.secao-sobre h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.secao-sobre p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+    .secao-sobre h2 {
+        font-size: 24px;
+    }
+}
