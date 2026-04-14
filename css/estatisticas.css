@@ -1,0 +1,24 @@
+.estatisticas-laterais {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-estatistica {
+    background-color: #ffffff;
+    padding: 25px;
+    border: 1px solid #cfcfcf;
+    text-align: center;
+}
+
+.card-estatistica h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.card-estatistica p {
+    font-size: 18px;
+    color: #666;
+}
