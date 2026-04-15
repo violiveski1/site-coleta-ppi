@@ -8,7 +8,7 @@
     display: grid;
     grid-template-columns: 2fr 100px 100px 100px;
     list-style: none;
-    gap: 30px;
+    gap: 10px;
     margin-left: 10px;
 }
 
