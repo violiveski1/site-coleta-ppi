@@ -12,6 +12,9 @@
     margin-left: 30px;
 }
 
+.cabecalho__logo {
+    margin-right: 30px;
+}
 .logo {
     width: 120px;
     height: auto;
