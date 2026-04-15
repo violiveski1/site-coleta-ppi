@@ -1,93 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+  <head>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoTech</title>
+  </head>
 
-<head>
-  <link rel="stylesheet" href="./css/styles.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EcoTech</title>
-</head>
+  <body>
+    <header class="cabecalho">
+      <nav class="cabecalho__nav">
+        <ul class="cabecalho__nav_list">
+          <li class="cabecalho__logo">
+            <img
+              src="./assets/logo_generica_sem-fundo.png"
+              class="logo"
+              alt="Logo EcoTech"
+            />
+          </li>
+          <li>
+            <a href="index.html" class="nav_texto">Início</a>
+          </li>
+          <li>
+            <a href="estatisticas.html" class="nav_texto">Estatísticas</a>
+          </li>
+          <li>
+            <a href="sobre.html" class="nav_texto">Sobre</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-<body>
-  <header class="cabecalho">
-    <nav class="cabecalho__nav">
-      <ul class="cabecalho__nav_list">
-        <li class="cabecalho__logo">
-          <img src="./assets/logo_generica_sem-fundo.png" class="logo" alt="Logo EcoTech">
-        </li>
-        <li>
-          <a href="index.html" class="nav_texto">Início</a>
-        </li>
-        <li>
-          <a href="estatisticas.html" class="nav_texto">Estatísticas</a>
-        </li>
-        <li>
-          <a href="sobre.html" class="nav_texto">Sobre</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="secao-mapa">
-      <div class="mapa-container">
-        <h1>Mapa de Pontos de Coleta</h1>
-        <div id="map"></div>
-      </div>
-
-      <aside class="estatisticas-laterais">
-        <div class="card-estatistica">
-          <h2>KG</h2>
-          <p>Coletados por mês</p>
+    <main>
+      <section class="secao-mapa">
+        <div class="mapa-container">
+          <h1>Mapa de Pontos de Coleta</h1>
+          <div id="map"></div>
         </div>
 
-        <div class="card-estatistica">
-          <h2>N</h2>
-          <p>Pontos de coleta</p>
+        <aside class="estatisticas-laterais">
+          <div class="card-estatistica">
+            <h2>KG</h2>
+            <p>Coletados por mês</p>
+          </div>
+
+          <div class="card-estatistica">
+            <h2>N</h2>
+            <p>Pontos de coleta</p>
+          </div>
+
+          <div class="card-estatistica">
+            <h2>%</h2>
+            <p>Reciclagem eficiente</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="secao-sobre">
+        <h2>Sobre a Coleta de Lixo Eletrônico</h2>
+        <p>(sobre paragrafo 1)</p>
+        <p>(sobre paragrafo 2)</p>
+      </section>
+
+      <section class="secao-graficos">
+        <div class="grafico">
+          <h2>Gráfico de Crescimento</h2>
+          <div class="grafico-box">
+            <p>Espaço para gráfico de barras ou linha</p>
+          </div>
         </div>
 
-        <div class="card-estatistica">
-          <h2>%</h2>
-          <p>Reciclagem eficiente</p>
+        <div class="grafico">
+          <h2>Distribuição de E-Waste</h2>
+          <div class="grafico-box">
+            <p>Espaço para gráfico de pizza</p>
+          </div>
         </div>
-      </aside>
-    </section>
+      </section>
+    </main>
 
-    <section class="secao-sobre">
-      <h2>Sobre a Coleta de Lixo Eletrônico</h2>
-      <p>
-        (sobre paragrafo 1)
-      </p>
-      <p>
-        (sobre paragrafo 2)
-      </p>
-    </section>
+    <footer class="rodape">
+      <a href="#" class="footer_texto">Links</a> |
+      <a href="#" class="footer_texto">Contato</a> |
+      <a href="#" class="footer_texto">Redes Sociais</a> | © 2026 EcoTech
+    </footer>
 
-    <section class="secao-graficos">
-      <div class="grafico">
-        <h2>Gráfico de Crescimento</h2>
-        <div class="grafico-box">
-          <p>Espaço para gráfico de barras ou linha</p>
-        </div>
-      </div>
-
-      <div class="grafico">
-        <h2>Distribuição de E-Waste</h2>
-        <div class="grafico-box">
-          <p>Espaço para gráfico de pizza</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="rodape">
-    <a href="#" class="footer_texto">Links</a> | <a href="#" class="footer_texto">Contato</a>  | <a href="#" class="footer_texto">Redes Sociais</a>  | © 2026 EcoTech
-  </footer>
-
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="./js/mapa.js"></script>
-
-</body>
-
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="./js/mapa.js"></script>
+  </body>
 </html>
