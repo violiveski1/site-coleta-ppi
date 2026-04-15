@@ -16,7 +16,7 @@
 }
 
 .cabecalho__logo {
-    /* Remove margin-right */
+    margin-right: auto;
 }
 
 .logo {
