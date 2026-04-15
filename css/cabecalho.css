@@ -6,7 +6,7 @@
 
 .cabecalho__nav_list {
     display: grid;
-    grid-template-columns: 3fr 10px 10px 10px;
+    grid-template-columns: 2fr 10px 10px 10px;
     list-style: none;
     gap: 30px;
     margin-left: 10px;
