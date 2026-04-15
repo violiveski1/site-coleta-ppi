@@ -1,9 +1,9 @@
-@import url("./css/cabecalho.css");
-@import url("./css/mapa.css");
-@import url("./css/estatisticas.css");
-@import url("./css/sobre.css");
-@import url("./css/graficos.css");
-@import url("./css/footer.css");
+@import url("cabecalho.css");
+@import url("mapa.css");
+@import url("estatisticas.css");
+@import url("sobre.css");
+@import url("graficos.css");
+@import url("footer.css");
 
 * {
     margin: 0;
