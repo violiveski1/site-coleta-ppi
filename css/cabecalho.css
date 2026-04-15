@@ -2,23 +2,19 @@
     background-color: #d9d9d9;
     padding: 20px 40px;
     border-bottom: 1px solid #bcbcbc;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .cabecalho__nav_list {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 75px 125px 100px;
     list-style: none;
     gap: 30px;
-    margin: 0;
-    padding: 0;
+    margin-left: 10px;
 }
 
 .cabecalho__logo {
-    margin-right: auto;
+    margin-right: 300px;
 }
-
 .logo {
     width: 60px;
     height: auto;
@@ -32,14 +28,10 @@
     color: black;
 }
 
+
 @media (max-width: 900px) {
-    .cabecalho {
-        flex-direction: column;
-        align-items: center;
-    }
     .cabecalho__nav_list {
         flex-wrap: wrap;
         justify-content: center;
-        margin-top: 10px;
     }
 }
