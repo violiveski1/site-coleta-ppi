@@ -6,9 +6,9 @@
 
 .cabecalho__nav_list {
     display: grid;
-    grid-template-columns: 2fr 100px 100px 100px;
+    grid-template-columns: 2fr 100px 125px 100px;
     list-style: none;
-    gap: 10px;
+    gap: 30px;
     margin-left: 10px;
 }
 
