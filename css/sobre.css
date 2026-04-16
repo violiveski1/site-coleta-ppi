@@ -5,18 +5,47 @@
     margin-bottom: 30px;
 }
 
+.secao-sobre h1,
 .secao-sobre h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
+    color: #2a5d4f;
 }
 
-.secao-sobre p {
-    font-size: 18px;
-    line-height: 1.6;
+.sobre-intro {
+    margin-bottom: 25px;
+}
+
+.sobre-intro h1 {
+    font-size: 36px;
     margin-bottom: 12px;
 }
 
+.sobre-descricao,
+.participantes {
+    margin-bottom: 25px;
+}
+
+.sobre-descricao p,
+.participantes p,
+.participantes li {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.participantes ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.participantes li {
+    margin-bottom: 10px;
+}
+
 @media (max-width: 900px) {
+    .secao-sobre h1 {
+        font-size: 28px;
+    }
+
     .secao-sobre h2 {
         font-size: 24px;
     }
