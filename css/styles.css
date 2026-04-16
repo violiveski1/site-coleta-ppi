@@ -12,13 +12,17 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
     background-color: #f3f3f3;
     color: #333;
 }
 
 main {
+    flex: 1;
     width: 90%;
     max-width: 1200px;
-    margin: 30px auto;
+    margin: 30px auto 0;
 }
