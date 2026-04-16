@@ -25,7 +25,8 @@
     font-weight: 500;
     cursor: pointer;
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
+    transform: translateY(-50%);
 }
 
 
@@ -34,4 +35,8 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+}
+
+.cabecalho__nav_item{
+    transform: translateY(30%);
 }
