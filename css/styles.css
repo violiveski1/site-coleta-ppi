@@ -6,6 +6,24 @@
 @import url("footer.css");
 @import url("easteregg.css");
 
+:root {
+    --cor-texto-principal: #1a5f05;
+    --cor-texto-secundario: #5E6E89;
+    --cor-texto: #EFEFEF;
+    --fonte-texto: "Poppins", sans-serif;
+    --fonte-titulo: "Orbitron", sans-serif;
+
+    --cor-links: #034a85;
+
+    --cor-destaque-principal: #FF55DF;
+    --cor-destaque-secundario: #8FFF24;
+
+    --cor-fundo-botao: #0b56f7;
+
+    --cor-de-fundo: #FFFFFF;
+}
+
+
 * {
     margin: 0;
     padding: 0;
