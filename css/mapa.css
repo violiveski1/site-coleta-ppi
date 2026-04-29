@@ -43,3 +43,9 @@
         font-size: 26px;
     }
 }
+
+#map .leaflet-top.leaflet-left,
+#map .leaflet-top.leaflet-right {
+    
+    z-index: 500 !important;
+}
