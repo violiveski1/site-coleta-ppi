@@ -9,8 +9,8 @@
     --cor-texto-principal: #1a5f05;
     --cor-texto-secundario: #5E6E89;
     --cor-texto: #EFEFEF;
-    --fonte-texto: "Poppins", sans-serif;
-    --fonte-titulo: "Orbitron", sans-serif;
+    --fonte-texto: "Merriweather", serif;
+    --fonte-titulo: "Inter", sans-serif;
 
     --cor-links: #034a85;
 
@@ -33,7 +33,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: Arial, sans-serif;
     background-color: #f3f3f3;
     color: #333;
 }
