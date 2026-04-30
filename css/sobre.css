@@ -45,3 +45,11 @@
         font-size: 24px;
     }
 }
+
+.titulo-sobre{
+    font-family: var(--fonte-titulo);
+}
+
+.texto-sobre{
+    font-family: var(--fonte-texto);
+}
