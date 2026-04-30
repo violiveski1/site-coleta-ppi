@@ -53,3 +53,11 @@
 .titulo-mapa{
     font-family: var(--fonte-titulo);
 }
+
+.estatistica-valor{
+    font-family: var(--fonte-titulo);
+}
+
+.estatistica-texto{
+    font-family: var(--fonte-texto);
+}
