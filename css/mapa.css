@@ -49,3 +49,7 @@
     
     z-index: 500 !important;
 }
+
+.titulo-mapa{
+    font-family: var(--fonte-titulo);
+}
