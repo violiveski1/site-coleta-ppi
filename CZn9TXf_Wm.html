@@ -1,0 +1,792 @@
+<!DOCTYPE html><html lang="pt-BR" style=""><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoTech — Pontos de Coleta de Lixo Eletrônico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #1a5f05;
+  --green-mid: #2e8b10;
+  --green-light: #4aac1f;
+  --teal: #0078a8;
+  --teal-light: #00a3d9;
+  --bg: #f4f8f2;
+  --surface: #ffffff;
+  --text: #1a2214;
+  --muted: #5a6b52;
+  --heading: 'Sora', sans-serif;
+  --body: 'Source Sans 3', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 4rem;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(26,95,5,0.1);
+  transition: box-shadow 0.3s;
+}
+.nav-logo {
+  font-family: var(--heading); font-weight: 800; font-size: 1.4rem;
+  color: var(--green);
+  display: flex; align-items: center; gap: 0.5rem; text-decoration: none;
+}
+.nav-logo-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--green), var(--green-light));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-logo-icon svg { width: 18px; height: 18px; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: var(--heading); font-weight: 600; font-size: 0.9rem;
+  color: var(--muted); text-decoration: none; letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--green); }
+.nav-cta {
+  background: var(--green); color: #fff;
+  padding: 0.55rem 1.4rem; border-radius: 50px;
+  font-family: var(--heading); font-weight: 600; font-size: 0.875rem;
+  text-decoration: none; transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid; place-items: center;
+  position: relative; overflow: hidden;
+  padding: 8rem 4rem 6rem;
+  background: linear-gradient(160deg, #0d2e06 0%, #1a5f05 40%, #0d5a3a 70%, #0a3d66 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(0,168,217,0.18) 0%, transparent 70%),
+              radial-gradient(ellipse 40% 60% at 20% 80%, rgba(74,172,31,0.15) 0%, transparent 60%);
+}
+.hero-dots {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 780px; text-align: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.9); border-radius: 50px;
+  padding: 0.4rem 1.1rem; font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green-light); }
+.hero h1 {
+  font-family: var(--heading); font-weight: 800;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 1.06; letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.7s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero h1 span {
+  background: linear-gradient(90deg, #7ddd4a, #00d4ff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero p {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: rgba(255,255,255,0.75); line-height: 1.7;
+  max-width: 560px; margin: 0 auto 2.5rem;
+  animation: fadeUp 0.7s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-btns {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.3s cubic-bezier(0.16,1,0.3,1) both;
+}
+.btn-primary {
+  background: #fff; color: var(--green);
+  padding: 0.9rem 2.2rem; border-radius: 50px;
+  font-family: var(--heading); font-weight: 700; font-size: 1rem;
+  text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+.btn-outline {
+  background: transparent; color: #fff;
+  border: 2px solid rgba(255,255,255,0.35);
+  padding: 0.9rem 2.2rem; border-radius: 50px;
+  font-family: var(--heading); font-weight: 600; font-size: 1rem;
+  text-decoration: none; transition: border-color 0.2s, background 0.2s;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.08); }
+.hero-scroll {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: rgba(255,255,255,0.4); font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  animation: fadeUp 0.7s 0.5s cubic-bezier(0.16,1,0.3,1) both;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* STATS */
+.stats {
+  padding: 5rem 4rem;
+  background: var(--surface);
+}
+.stats-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+}
+.stat-card {
+  background: var(--bg);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border: 1px solid rgba(26,95,5,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--teal-light));
+}
+.stat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(26,95,5,0.12); }
+.stat-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--green), var(--green-light));
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.2rem;
+}
+.stat-icon svg { width: 26px; height: 26px; }
+.stat-number {
+  font-family: var(--heading); font-weight: 800;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  color: var(--green); line-height: 1;
+  letter-spacing: -0.03em;
+}
+.stat-label {
+  font-family: var(--heading); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); margin-top: 0.5rem;
+}
+.stat-desc { font-size: 0.95rem; color: var(--muted); margin-top: 0.4rem; }
+
+/* MAP */
+.map-section {
+  padding: 5rem 4rem;
+  background: linear-gradient(180deg, #f4f8f2, #e8f2e4);
+}
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-tag {
+  display: inline-block;
+  font-family: var(--heading); font-weight: 600; font-size: 0.75rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--green); background: rgba(26,95,5,0.08);
+  padding: 0.35rem 1rem; border-radius: 50px;
+  margin-bottom: 1rem;
+}
+.section-header h2 {
+  font-family: var(--heading); font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.03em; color: var(--text); line-height: 1.1;
+}
+.section-header p {
+  color: var(--muted); font-size: 1.1rem; line-height: 1.65;
+  max-width: 520px; margin: 1rem auto 0;
+}
+.map-wrapper {
+  max-width: 1100px; margin: 0 auto;
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 16px 48px rgba(26,95,5,0.1);
+  border: 1px solid rgba(26,95,5,0.1);
+  height: 480px;
+  background: #d4e8cc;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.map-placeholder {
+  text-align: center; color: var(--muted);
+}
+.map-placeholder svg { width: 56px; height: 56px; margin-bottom: 1rem; opacity: 0.4; }
+.map-placeholder p { font-size: 1rem; font-family: var(--heading); font-weight: 600; }
+.map-placeholder span { font-size: 0.85rem; opacity: 0.7; }
+/* Embedded map pins decorative */
+.map-pins {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(26,95,5,0.04) 0%, transparent 70%);
+}
+
+/* ABOUT */
+.about {
+  padding: 6rem 4rem;
+  background: var(--surface);
+}
+.about-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+.about-visual {
+  position: relative;
+}
+.about-img-wrap {
+  border-radius: 24px; overflow: hidden;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #1a5f05, #0078a8);
+  display: flex; align-items: center; justify-content: center;
+}
+.about-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.about-badge {
+  position: absolute; bottom: -1.5rem; left: 2rem;
+  background: var(--green);
+  color: #fff; border-radius: 16px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 8px 32px rgba(26,95,5,0.3);
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.about-badge-num {
+  font-family: var(--heading); font-weight: 800; font-size: 1.8rem;
+  line-height: 1;
+}
+.about-badge-text { font-size: 0.8rem; line-height: 1.3; opacity: 0.85; font-weight: 600; }
+.about-content { padding-top: 1rem; }
+.about-content h2 {
+  font-family: var(--heading); font-weight: 800;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: -0.03em; line-height: 1.1;
+  color: var(--text); margin-bottom: 1.5rem;
+}
+.about-content p {
+  color: var(--muted); font-size: 1.05rem; line-height: 1.75;
+  margin-bottom: 1.2rem; max-width: 520px;
+}
+.about-points { list-style: none; margin: 2rem 0; display: flex; flex-direction: column; gap: 0.9rem; }
+.about-points li {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  font-size: 1rem; color: var(--text);
+}
+.point-check {
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px;
+  background: rgba(26,95,5,0.12);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.point-check svg { width: 13px; height: 13px; }
+
+/* TEAM */
+.team {
+  padding: 5rem 4rem 6rem;
+  background: linear-gradient(180deg, #f4f8f2, #eaf4e6);
+}
+.team-grid {
+  max-width: 900px; margin: 3rem auto 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+}
+.team-card {
+  background: var(--surface); border-radius: 20px;
+  padding: 2rem; display: flex; align-items: center; gap: 1.25rem;
+  border: 1px solid rgba(26,95,5,0.08);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.team-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(26,95,5,0.1); }
+.team-avatar {
+  width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--heading); font-weight: 700; font-size: 1.2rem; color: #fff;
+}
+.av1 { background: linear-gradient(135deg, #1a5f05, #4aac1f); }
+.av2 { background: linear-gradient(135deg, #0078a8, #00a3d9); }
+.av3 { background: linear-gradient(135deg, #2e8b10, #0d5a3a); }
+.av4 { background: linear-gradient(135deg, #0d5a3a, #0078a8); }
+.team-name { font-family: var(--heading); font-weight: 700; font-size: 1rem; color: var(--text); }
+.team-role { font-size: 0.875rem; color: var(--muted); margin-top: 0.2rem; }
+
+/* CONTACT */
+.contact {
+  padding: 5rem 4rem;
+  background: linear-gradient(135deg, #0d2e06, #1a5f05 50%, #0a3d66);
+  position: relative; overflow: hidden;
+}
+.contact::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.contact-inner {
+  max-width: 700px; margin: 0 auto; text-align: center; position: relative; z-index: 2;
+}
+.contact h2 {
+  font-family: var(--heading); font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.03em; color: #fff;
+  margin-bottom: 1rem;
+}
+.contact p { color: rgba(255,255,255,0.7); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2.5rem; }
+.contact-form {
+  display: flex; gap: 0.75rem; max-width: 480px; margin: 0 auto;
+}
+.contact-form input {
+  flex: 1; padding: 0.9rem 1.4rem; border-radius: 50px;
+  background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2);
+  color: #fff; font-family: var(--body); font-size: 1rem;
+  outline: none; transition: border-color 0.2s;
+}
+.contact-form input::placeholder { color: rgba(255,255,255,0.45); }
+.contact-form input:focus { border-color: rgba(255,255,255,0.5); }
+.contact-form label { position: absolute; opacity: 0; pointer-events: none; }
+.contact-form button {
+  background: #fff; color: var(--green);
+  border: none; cursor: pointer;
+  padding: 0.9rem 1.8rem; border-radius: 50px;
+  font-family: var(--heading); font-weight: 700; font-size: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap;
+}
+.contact-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+/* FOOTER */
+footer {
+  background: #0a1a06; color: rgba(255,255,255,0.5);
+  padding: 2.5rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.875rem;
+}
+.footer-logo {
+  font-family: var(--heading); font-weight: 800;
+  font-size: 1.1rem; color: rgba(255,255,255,0.8);
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  color: rgba(255,255,255,0.5); text-decoration: none;
+  transition: color 0.2s; font-weight: 600; font-size: 0.85rem;
+}
+.footer-links a:hover { color: rgba(255,255,255,0.9); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.15); }
+}
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { padding: 7rem 1.5rem 5rem; }
+  .stats { padding: 3rem 1.5rem; }
+  .stats-inner { grid-template-columns: 1fr; }
+  .map-section, .about, .team, .contact { padding: 4rem 1.5rem; }
+  .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .about-badge { position: static; margin-top: 1.5rem; display: inline-flex; }
+  .team-grid { grid-template-columns: 1fr; }
+  .contact-form { flex-direction: column; }
+  footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+<style>@media (max-width: 390px) { .hp-hide-mobile { display: none !important; } }
+@media (min-width: 391px) and (max-width: 768px) { .hp-hide-tablet { display: none !important; } }
+@media (min-width: 769px) { .hp-hide-desktop { display: none !important; } }
+.estat {
+  padding: 5rem 4rem;
+  background: var(--surface);
+}
+.estat-grid {
+  max-width: 1100px; margin: 3rem auto 0;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+}
+.estat-card {
+  background: var(--bg); border-radius: 20px; padding: 2rem;
+  border: 1px solid rgba(26,95,5,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.estat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(26,95,5,0.1); }
+.estat-card-header {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;
+}
+.estat-label {
+  font-family: var(--heading); font-weight: 700; font-size: 0.9rem; color: var(--text);
+}
+.estat-trend {
+  font-family: var(--heading); font-weight: 700; font-size: 0.8rem;
+  padding: 0.25rem 0.65rem; border-radius: 50px;
+}
+.estat-trend.up { background: rgba(26,95,5,0.1); color: var(--green); }
+.estat-text { font-size: 0.95rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.5rem; }
+.estat-bar-wrap {
+  height: 8px; background: rgba(26,95,5,0.1); border-radius: 50px; overflow: hidden; margin-bottom: 0.5rem;
+}
+.estat-bar {
+  height: 100%; background: linear-gradient(90deg, var(--green), var(--green-light));
+  border-radius: 50px;
+}
+.estat-bar-label {
+  display: flex; justify-content: space-between;
+  font-size: 0.8rem; color: var(--muted); font-weight: 600;
+}
+.estat-categories { display: flex; flex-direction: column; gap: 0.65rem; }
+.estat-cat {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.9rem; color: var(--text); justify-content: space-between;
+}
+.estat-cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+@media (max-width: 768px) {
+  .estat { padding: 4rem 1.5rem; }
+  .estat-grid { grid-template-columns: 1fr; }
+}</style><style id="htmlpub-breakpoint-visibility">@media (max-width: 390px) { .hp-hide-mobile { display: none !important; } }
+@media (min-width: 391px) and (max-width: 768px) { .hp-hide-tablet { display: none !important; } }
+@media (min-width: 769px) { .hp-hide-desktop { display: none !important; } }</style><style>#htmlpub-link-input::placeholder{color:rgba(255,255,255,0.65);}ul,ol{padding:20px;}</style></head>
+<body style="">
+
+<nav style="">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"></path>
+        <path d="M12 8v4l3 3"></path>
+        <path d="M3.6 15h16.8"></path>
+      </svg>
+    </span>
+    EcoTech
+  </a>
+  <ul class="nav-links">
+  <li><a href="#mapa">Mapa</a></li>
+  <li><a href="#estatisticas">Estatísticas</a></li>
+  <li><a href="#sobre">Sobre</a></li>
+  <li><a href="#equipe">Equipe</a></li>
+</ul>
+  <a href="#contato" class="nav-cta">Entre em contato</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dots" style=""></div>
+  <div class="hero-content" style="">
+    <div class="hero-badge" style="">
+      <span class="hero-badge-dot"></span>
+      Descarte responsável de eletrônicos
+    </div>
+    <h1 style="">Descarte certo.<br><span style="">Futuro limpo.</span></h1>
+    <p style="">Encontre o ponto de coleta de lixo eletrônico mais próximo de você e faça parte da solução para um planeta mais sustentável.</p>
+    <div class="hero-btns" style="">
+      <a href="#mapa" class="btn-primary" style="">Ver pontos de coleta</a>
+      <a href="#sobre" class="btn-outline" style="">Saiba mais</a>
+    </div>
+  </div>
+  <div class="hero-scroll" style="">
+    <div class="scroll-line"></div>
+    Role para baixo
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats" style="">
+  <div class="stats-inner" style="">
+    <div class="stat-card reveal visible">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+          <path d="M8 12l2.5 2.5L16 9"></path>
+        </svg>
+      </div>
+      <div class="stat-number" data-target="1240">1.240</div>
+      <div class="stat-label">KG coletados por mês</div>
+      <div class="stat-desc">Quilos de eletrônicos descartados corretamente</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1 visible" style="">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+          <circle cx="12" cy="9" r="2.5"></circle>
+        </svg>
+      </div>
+      <div class="stat-number" data-target="38" style="">38</div>
+      <div class="stat-label" style="">Pontos de coleta</div>
+      <div class="stat-desc" style="">Locais ativos espalhados pela cidade</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2 visible" style="">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+        </svg>
+      </div>
+      <div class="stat-number" data-target="92" style="">92%</div>
+      <div class="stat-label">% reciclagem eficiente</div>
+      <div class="stat-desc" style="">Do material coletado é reciclado com sucesso</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section" id="mapa" style="">
+  <div class="section-header reveal visible" style="">
+    <span class="section-tag">Localização</span>
+    <h2 style="">Mapa de Pontos de Coleta</h2>
+    <p style="">Encontre o ponto de coleta mais perto de você. Atendemos toda a cidade com pontos estrategicamente distribuídos.</p>
+  </div>
+  <div class="map-wrapper reveal visible">
+    <div class="map-pins" style=""></div>
+    <div class="map-placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+        <circle cx="12" cy="9" r="2.5"></circle>
+      </svg>
+      <p>Mapa Interativo</p>
+      <span>Integração com OpenStreetMap / Leaflet</span>
+    </div>
+  </div>
+</section>
+<section class="estat" id="estatisticas" style="">
+  <div class="section-header reveal visible" style="">
+    <span class="section-tag">Estatísticas</span>
+    <h2 style="">Dados do sistema de coleta</h2>
+    <p>Acompanhe os principais indicadores de desempenho e o impacto do programa de reciclagem eletrônica na cidade.</p>
+  </div>
+  <div class="estat-grid">
+    <div class="estat-card reveal visible" style="">
+      <div class="estat-card-header">
+        <span class="estat-label">Crescimento Mensal</span>
+        <span class="estat-trend up">+18%</span>
+      </div>
+      <p class="estat-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tellus ullamcorper, convallis urna vel, commodo tortor. Duis pulvinar tempus elit, nec elementum diam tempor sed.</p>
+      <div class="estat-bar-wrap"><div class="estat-bar" style="width:72%"></div></div>
+      <div class="estat-bar-label"><span>Volume coletado</span><span>72%</span></div>
+    </div>
+    <div class="estat-card reveal reveal-delay-1 visible">
+      <div class="estat-card-header">
+        <span class="estat-label">Distribuição por Categoria</span>
+        <span class="estat-trend up">+9%</span>
+      </div>
+      <p class="estat-text">Quisque vulputate tellus augue, a pellentesque purus fringilla in. Aenean pulvinar, ipsum a interdum sodales, nulla mi interdum elit, vitae malesuada lacus nulla vel orci.</p>
+      <div class="estat-categories">
+        <div class="estat-cat"><span class="estat-cat-dot" style="background:#1a5f05"></span>Celulares e tablets <strong>38%</strong></div>
+        <div class="estat-cat"><span class="estat-cat-dot" style="background:#0078a8"></span>Computadores e notebooks <strong>29%</strong></div>
+        <div class="estat-cat"><span class="estat-cat-dot" style="background:#4aac1f"></span>Pilhas e baterias <strong>21%</strong></div>
+        <div class="estat-cat"><span class="estat-cat-dot" style="background:#00a3d9"></span>Outros eletrônicos <strong>12%</strong></div>
+      </div>
+    </div>
+    <div class="estat-card reveal reveal-delay-2 visible" style="">
+      <div class="estat-card-header">
+        <span class="estat-label">Eficiência de Reciclagem</span>
+        <span class="estat-trend up" style="">+5%</span>
+      </div>
+      <p class="estat-text" style="">Pellentesque id ante a mauris accumsan molestie sit amet quis libero. Integer vulputate quis elit non rutrum. Praesent lectus urna, congue consectetur luctus vitae.</p>
+      <div class="estat-bar-wrap"><div class="estat-bar" style="width:92%;background:linear-gradient(90deg,#0078a8,#00a3d9)"></div></div>
+      <div class="estat-bar-label" style=""><span>Taxa de aproveitamento</span><span>92%</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section class="about" id="sobre" style="">
+  <div class="about-inner" style="">
+    <div class="about-visual reveal visible">
+      <div class="about-img-wrap">
+  <div style="width: 100%; height: 100%; min-height: 300px; background: linear-gradient(135deg, rgb(26, 95, 5) 0%, rgb(46, 139, 16) 40%, rgb(0, 120, 168) 100%); display: flex; align-items: center; justify-content: center;">
+    <svg viewBox="0 0 80 80" width="96" height="96" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="">
+      <rect x="10" y="28" width="60" height="38" rx="4"></rect>
+      <path d="M26 28v-8a14 14 0 0 1 28 0v8"></path>
+      <circle cx="40" cy="47" r="6"></circle>
+      <path d="M40 53v6"></path>
+    </svg>
+  </div>
+</div>
+      <div class="about-badge">
+        <div>
+          <div class="about-badge-num">2026</div>
+          <div class="about-badge-text">Projeto<br>EcoTech</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-content reveal reveal-delay-1 visible" style="">
+      <span class="section-tag">Sobre o Projeto</span>
+      <h2 style="">Tecnologia a serviço do meio ambiente</h2>
+      <p style="">O EcoTech nasceu da necessidade de melhorar a coleta de lixo eletrônico na cidade, conectando pontos de coleta com a comunidade de forma simples e acessível.</p>
+      <p style="">Utilizamos um mapa interativo, estatísticas visuais e informações claras para facilitar o descarte correto de equipamentos eletrônicos — celulares, computadores, pilhas, baterias e muito mais.</p>
+      <ul class="about-points" style="">
+        <li style="">
+          <span class="point-check">
+            <svg viewBox="0 0 13 13" fill="none" stroke="#1a5f05" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 6.5l3 3 6-6"></path>
+            </svg>
+          </span>
+          Mapa interativo com localização em tempo real
+        </li>
+        <li style="">
+          <span class="point-check">
+            <svg viewBox="0 0 13 13" fill="none" stroke="#1a5f05" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 6.5l3 3 6-6"></path>
+            </svg>
+          </span>
+          Conscientização ambiental e educação digital
+        </li>
+        <li style="">
+          <span class="point-check">
+            <svg viewBox="0 0 13 13" fill="none" stroke="#1a5f05" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 6.5l3 3 6-6"></path>
+            </svg>
+          </span>
+          Estatísticas de impacto transparentes e atualizadas
+        </li>
+        <li style="">
+          <span class="point-check">
+            <svg viewBox="0 0 13 13" fill="none" stroke="#1a5f05" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 6.5l3 3 6-6"></path>
+            </svg>
+          </span>
+          Incentivo a práticas mais sustentáveis no cotidiano
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="equipe" style="height: 1188px;">
+  <div class="section-header reveal visible" style="">
+    <span class="section-tag">Nossa Equipe</span>
+    <h2 style="">Quem está por trás do EcoTech</h2>
+    <p style="">Conheça os participantes responsáveis pelo desenvolvimento do projeto.</p>
+  </div>
+  <div class="team-grid" style="width: 670px; max-width: 1000px; height: 873px; display: block;">
+    <div class="team-card reveal visible" style="">
+      <div class="team-avatar av1">P1</div>
+      <div style="">
+        <div class="team-name" style="">Nome do Participante 1</div>
+        <div class="team-role" style="">Função ou descrição do papel no projeto</div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-1 visible" style="">
+      <div class="team-avatar av2">P2</div>
+      <div>
+        <div class="team-name" style="">Nome do Participante 2</div>
+        <div class="team-role" style="">Função ou descrição do papel no projeto</div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-2 visible" style="">
+      <div class="team-avatar av3" style="">P3</div>
+      <div style="">
+        <div class="team-name" style="">Nome do Participante 3</div>
+        <div class="team-role" style="">Função ou descrição do papel no projeto</div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-3 visible" style="">
+      <div class="team-avatar av4" style="">P4</div>
+      <div style="">
+        <div class="team-name" style="">Nome do Participante 4</div>
+        <div class="team-role" style="">Função ou descrição do papel no projeto</div>
+      </div>
+    </div><div class="team-card reveal reveal-delay-3 visible" style="" data-htmlpub-settled="1">
+      <div class="team-avatar av4">P4</div>
+      <div style="">
+        <div class="team-name" style="">Nome do Participante 5</div>
+        <div class="team-role" style="">Função ou descrição do papel no projeto</div>
+      </div>
+    </div><div class="team-card reveal reveal-delay-3 visible" style="" data-htmlpub-settled="1">
+      <div class="team-avatar av4" style="">P4</div>
+      <div style="">
+        <div class="team-name" style="">Nome do Participante 6</div>
+        <div class="team-role" style="">Função ou descrição do papel no projeto</div>
+      </div>
+    </div><div class="team-card reveal reveal-delay-3 visible" style="" data-htmlpub-settled="1">
+      <div class="team-avatar av4" style="">P4</div>
+      <div style="">
+        <div class="team-name" style="">Nome do Participante 7</div>
+        <div class="team-role" style="">Função ou descrição do papel no projeto</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contato" style="">
+  <div class="contact-inner" style="">
+    <span class="section-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);">Contato</span>
+    <h2 style="">Faça parte da mudança</h2>
+    <p style="">Quer saber mais sobre o projeto, sugerir um novo ponto de coleta ou entrar em contato com a equipe? Deixe seu e-mail.</p>
+    <form class="contact-form" name="contato-ecotech" data-success-message="Obrigado! Entraremos em contato em breve.">
+      <label for="contact-email">Seu e-mail</label>
+      <input type="email" id="contact-email" name="email" placeholder="seuemail@exemplo.com" required="">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="">
+  <div class="footer-logo">EcoTech</div>
+  <div class="footer-links">
+    <a href="#mapa">Mapa</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#equipe">Equipe</a>
+    <a href="#contato" style="">Contato</a>
+  </div>
+  <div style="">© 2026 EcoTech. Todos os direitos reservados.</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const counters = document.querySelectorAll('[data-target]');
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = parseInt(el.dataset.target);
+    const suffix = target === 92 ? '%' : '';
+    let start = 0;
+    const duration = 1800;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target).toLocaleString('pt-BR') + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    countObserver.unobserve(el);
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => countObserver.observe(c));
+</script>
+
+
+</body></html>
