@@ -23,3 +23,11 @@
     font-size: 18px;
     color: #666;
 }
+
+.secao-estatisticas{
+    margin-bottom: 25px;
+    flex: 2;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #cfcfcf;
+}
