@@ -1,0 +1,27 @@
+.participantes {
+    margin-bottom: 25px;
+    flex: 2;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #cfcfcf;
+}
+.participantes p,
+.participantes li {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+.subtitulo-participantes {
+    text-align: center;
+    font-family: var(--fonte-titulo);
+}
+.participantes-intro {
+    text-align: center;
+}
+.participantes ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+.participantes li {
+    margin-bottom: 10px;
+}
