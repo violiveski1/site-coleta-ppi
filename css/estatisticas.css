@@ -11,6 +11,7 @@
 .titulo-estatisticas {
     text-align: center;
     font-family: var(--fonte-titulo);
+    margin-bottom: 30px;
 }
 .texto-estatisticas {
     font-family: var(--fonte-texto);
@@ -19,6 +20,8 @@
 .descricao-estatisticas {
     text-align: center;
     font-family: var(--fonte-texto);
+    margin-bottom: 30px;
+    font-size: 20px;
 }
 
 .card-estatistica {
