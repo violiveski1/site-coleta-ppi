@@ -11,7 +11,7 @@
 .titulo-estatisticas {
     text-align: center;
     font-family: var(--fonte-titulo);
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 .texto-estatisticas {
     font-family: var(--fonte-texto);
@@ -20,7 +20,7 @@
 .descricao-estatisticas {
     text-align: center;
     font-family: var(--fonte-texto);
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     font-size: 20px;
 }
 
