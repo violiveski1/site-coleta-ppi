@@ -5,39 +5,25 @@
     margin-bottom: 30px;
 }
 
-.sobre-intro {
-    margin-bottom: 25px;
+.titulo-sobre{
+    font-family: var(--fonte-titulo);
+    text-align: center;
+    margin-bottom: 15px;
 }
 
-.sobre-intro h1 {
-    font-size: 36px;
-    margin-bottom: 12px;
+.subtitulo-projeto {
+    text-align: center;
+    font-family: var(--fonte-titulo);
+    margin-bottom: 15px;
+}
+.texto-sobre{
+    font-family: var(--fonte-texto);
+    text-indent: 30px;
 }
 
-.sobre-descricao,
-.participantes {
-    margin-bottom: 25px;
-    flex: 2;
-    background-color: #ffffff;
-    padding: 20px;
-    border: 1px solid #cfcfcf;
-}
-
-.sobre-descricao p,
-.participantes p,
-.participantes li {
-    font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 12px;
-}
-
-.participantes ul {
-    list-style: disc;
-    padding-left: 20px;
-}
-
-.participantes li {
-    margin-bottom: 10px;
+.descricao-projeto {
+    font-family: var(--fonte-texto);
+    text-indent: 30px;
 }
 
 @media (max-width: 900px) {
@@ -48,12 +34,4 @@
     .secao-sobre h2 {
         font-size: 24px;
     }
-}
-
-.titulo-sobre{
-    font-family: var(--fonte-titulo);
-}
-
-.texto-sobre{
-    font-family: var(--fonte-texto);
 }
