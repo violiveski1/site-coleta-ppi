@@ -15,7 +15,10 @@
 .grafico h2 {
     margin-bottom: 15px;
     font-size: 26px;
+    font-family: var(--fonte-titulo);
+    text-align: center;
 }
+
 
 .grafico-box {
     height: 250px;
