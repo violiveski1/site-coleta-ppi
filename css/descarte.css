@@ -1,0 +1,37 @@
+.secao-descarte {
+  margin-bottom: 25px;
+  flex: 2;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #cfcfcf;
+}
+
+.titulo-descarte {
+  font-family: var(--fonte-titulo);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.texto-descarte {
+  margin-bottom: 12px;
+  text-align: center;
+  font-family: var(--fonte-texto);
+}
+
+.lista-descarte {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.item-descarte{
+    border: 1px solid #cfcfcf;
+}
+
+.lista-descarte img {
+    width: 200px;
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
