@@ -1,93 +1,85 @@
 .participantes {
-    margin-bottom: 25px;
-    flex: 2;
-    background-color: #ffffff;
-    padding: 20px;
-    border: 1px solid #cfcfcf;
+  margin-bottom: 25px;
+  flex: 2;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #cfcfcf;
 }
 .participantes p,
 .participantes li,
 .orientadores {
-    font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 12px;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 12px;
 }
 .orientadores-ul {
-     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    list-style: none;
-    margin: 14px 15% 14px 15%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  list-style: none;
+  margin: 14px 15% 14px 15%;
 }
 .orientadores-intro {
-    text-align: center;
-    font-weight: bold;
+  text-align: center;
+  font-weight: bold;
 }
 .titulo-orientadores {
-     text-align: center;
-    font-family: var(--fonte-titulo);
+  text-align: center;
+  font-family: var(--fonte-titulo);
 }
 .subtitulo-participantes {
-    text-align: center;
-    font-family: var(--fonte-titulo);
+  text-align: center;
+  font-family: var(--fonte-titulo);
 }
 .participantes-intro {
-    text-align: center;
+    font-weight: bold;
+  text-align: center;
 }
-
 
 .participantes-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  list-style: none;
 
-    grid-template-areas: 
-    "alvaro arthur bernardo bruno"
-
+  grid-template-areas: "alvaro arthur bernardo bruno";
 }
 .participantes_2-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    list-style: none;
-    margin: 14px 15% 14px 15%;
-    grid-template-areas: 
-    "henrique mateus vicente";
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  list-style: none;
+  margin: 14px 15% 14px 15%;
+  grid-template-areas: "henrique mateus vicente";
 }
 
-
 .participante_1 {
-    grid-area: alvaro;
+  grid-area: alvaro;
 }
 
 .participante_2 {
-    grid-area: arthur;
+  grid-area: arthur;
 }
 
 .participante_3 {
-    grid-area: bernardo;
+  grid-area: bernardo;
 }
 
 .participante_4 {
-    grid-area: bruno;
+  grid-area: bruno;
 }
 
 .participante_5 {
-    grid-area: henrique;
-
+  grid-area: henrique;
 }
 
 .participante_6 {
-    grid-area: mateus;
+  grid-area: mateus;
 }
-
 
 .participante_7 {
-    grid-area: vicente;
-
+  grid-area: vicente;
 }
-
 
 .participante_1,
 .participante_2,
@@ -97,22 +89,17 @@
 .participante_6,
 .participante_7,
 .orientadores {
-    display: block;
-    background-color: #f8f8f8;
-    border: 1px solid #d9d9d9;
-    padding: 16px;
-    border-radius: 10px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.participante:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  display: block;
+  background-color: #f8f8f8;
+  border: 1px solid #d9d9d9;
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .participante strong {
-    display: block;
-    margin-bottom: 8px;
-    color: #222;
-    font-size: 1.05rem;
+  display: block;
+  margin-bottom: 8px;
+  color: #222;
+  font-size: 1.05rem;
 }
