@@ -17,7 +17,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // marcador
-L.marker([-28.6606, -56.0044])
+L.marker([-28.66745003818483, -55.99457590723304])
     .addTo(map)
-    .bindPopup("São Borja - Ponto de coleta");
+    .bindPopup("Instituto Federal Farroupilha - Campus São Borja");
 
