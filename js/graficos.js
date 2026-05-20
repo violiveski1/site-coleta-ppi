@@ -1,111 +1,83 @@
 const URL =
-"https://opensheet.elk.sh/1tAbdoMPOTdl8jQSV_LiYbKZmggIxAkTvfv7fpcIDOwQ/Respostas%20ao%20formul%C3%A1rio%201";
+  "https://opensheet.elk.sh/1tAbdoMPOTdl8jQSV_LiYbKZmggIxAkTvfv7fpcIDOwQ/Respostas%20ao%20formul%C3%A1rio%201";
 
 async function carregarGraficos() {
+  const response = await fetch(URL);
+  const dados = await response.json();
 
-    const response = await fetch(URL);
-    const dados = await response.json();
+  console.log(dados);
 
-    console.log(dados);
+  const tipos = {};
+  const conhecimento = {};
+  const consequencias = {};
+  const guardam = {};
 
-    const tipos = {};
-    const conhecimento = {};
-    const consequencias = {};
-    const guardam = {};
+  dados.forEach((item) => {
+    const tipo =
+      item[
+        "Você conhece os pontos de coleta de lixo eletrônico da sua cidade?"
+      ];
 
-    dados.forEach(item => {
+    if (tipo) {
+      tipos[tipo] = (tipos[tipo] || 0) + 1;
+    }
 
-        const tipo =
-        item["Você conhece os pontos de coleta de lixo eletrônico da sua cidade?"];
+    const respostaConhecimento =
+      item["O quanto você sabe sobre Lixo Eletrônico?"];
 
-        if(tipo){
+    if (respostaConhecimento) {
+      conhecimento[respostaConhecimento] =
+        (conhecimento[respostaConhecimento] || 0) + 1;
+    }
 
-            tipos[tipo] =
-            (tipos[tipo] || 0) + 1;
+    const respostaConsequencias =
+      item[
+        "Você sabe as consequências do descarte incorreto de lixo eletrônico?"
+      ];
 
-        }
+    if (respostaConsequencias) {
+      consequencias[respostaConsequencias] =
+        (consequencias[respostaConsequencias] || 0) + 1;
+    }
 
-        const respostaConhecimento =
-        item["O quanto você sabe sobre Lixo Eletrônico?"];
+    const respostaGuardam = item["Você guarda lixo eletrônico em casa?"];
 
-        if(respostaConhecimento){
+    if (respostaGuardam) {
+      guardam[respostaGuardam] = (guardam[respostaGuardam] || 0) + 1;
+    }
+  });
 
-            conhecimento[respostaConhecimento] =
-            (conhecimento[respostaConhecimento] || 0) + 1;
+  criarGraficoPizza("graficoTipos", tipos);
 
-        }
+  criarGraficoPizza("graficoConhecimento", conhecimento);
 
-        const respostaConsequencias =
-        item["Você sabe as consequências do descarte incorreto de lixo eletrônico?"];
+  criarGraficoPizza("graficoConsequencias", consequencias);
 
-        if(respostaConsequencias){
-
-            consequencias[respostaConsequencias] =
-            (consequencias[respostaConsequencias] || 0) + 1;
-
-        }
-
-        const respostaGuardam =
-        item["Você guarda lixo eletrônico em casa?"];
-
-        if(respostaGuardam){
-
-            guardam[respostaGuardam] =
-            (guardam[respostaGuardam] || 0) + 1;
-
-        }
-
-    });
-
-    criarGraficoPizza(
-        "graficoTipos",
-        tipos
-    );
-
-    criarGraficoPizza(
-        "graficoConhecimento",
-        conhecimento
-    );
-
-    criarGraficoPizza(
-        "graficoConsequencias",
-        consequencias
-    );
-
-    criarGraficoPizza(
-        "graficoGuardam",
-        guardam
-    );
-
+  criarGraficoPizza("graficoGuardam", guardam);
 }
 
 // =========================
 // FUNÇÃO PIZZA
 // =========================
 
-function criarGraficoPizza(id, dados){
+function criarGraficoPizza(id, dados) {
+  new Chart(document.getElementById(id), {
+    type: "pie",
 
-    new Chart(
-        document.getElementById(id),
+    data: {
+      labels: Object.keys(dados),
+
+      datasets: [
         {
-            type: "pie",
-
-            data: {
-                labels: Object.keys(dados),
-
-                datasets: [{
-                    data: Object.values(dados)
-                }]
-            }
-        }
-    );
-
+          data: Object.values(dados),
+        },
+      ],
+    },
+  });
 }
 
 carregarGraficos();
 
 setInterval(() => {
-
-    location.reload();
-
+  location.reload();
 }, 10000);
