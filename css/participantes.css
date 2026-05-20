@@ -38,20 +38,15 @@
 
 .participantes-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  list-style: none;
-
-  grid-template-areas: "alvaro arthur bernardo bruno";
-}
-.participantes_2-list {
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
   list-style: none;
-  margin: 14px 15% 14px 15%;
-  grid-template-areas: "henrique mateus vicente";
+  grid-template-areas: "alvaro arthur bernardo"
+                       "bruno henrique mateus"
+                       "claiton icaro vicente";
+ 
 }
+
 
 .participante_1 {
   grid-area: alvaro;
@@ -70,14 +65,20 @@
 }
 
 .participante_5 {
-  grid-area: henrique;
+  grid-area: claiton;
 }
 
 .participante_6 {
-  grid-area: mateus;
+  grid-area: henrique;
 }
 
 .participante_7 {
+  grid-area: icaro;
+}
+.participante_8 {
+  grid-area: mateus;
+}
+.participante_9 {
   grid-area: vicente;
 }
 
@@ -88,7 +89,8 @@
 .participante_5,
 .participante_6,
 .participante_7,
-.orientadores {
+.participante_8,
+.participante_9 {
   display: block;
   background-color: #f8f8f8;
   border: 1px solid #d9d9d9;

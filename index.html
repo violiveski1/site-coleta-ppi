@@ -47,9 +47,9 @@
         <p class="texto-sobre"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tellus ullamcorper, convallis urna vel, commodo tortor. Duis pulvinar tempus elit, nec elementum diam tempor sed. Quisque vulputate tellus augue, a pellentesque purus fringilla in. Aenean pulvinar, ipsum a interdum sodales, nulla mi interdum elit, vitae malesuada lacus nulla vel orci. Pellentesque id ante a mauris accumsan molestie sit amet quis libero. Integer vulputate quis elit non rutrum. Praesent lectus urna, congue consectetur luctus vitae, maximus vitae lacus. Phasellus volutpat lobortis arcu. Pellentesque ut rutrum arcu, ut placerat nibh. Cras gravida purus sit amet lacinia fringilla. Praesent vehicula sed tellus id rutrum. Donec pharetra, lacus eget vestibulum efficitur, est tellus suscipit mi, ac aliquet orci risus gravida metus. In non lectus justo. Aliquam pharetra congue vehicula. Suspendisse sollicitudin sollicitudin eleifend. Sed ac viverra lectus.</p>
         <p class="texto-sobre"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tellus ullamcorper, convallis urna vel, commodo tortor. Duis pulvinar tempus elit, nec elementum diam tempor sed. Quisque vulputate tellus augue, a pellentesque purus fringilla in. Aenean pulvinar, ipsum a interdum sodales, nulla mi interdum elit, vitae malesuada lacus nulla vel orci. Pellentesque id ante a mauris accumsan molestie sit amet quis libero. Integer vulputate quis elit non rutrum. Praesent lectus urna, congue consectetur luctus vitae, maximus vitae lacus. Phasellus volutpat lobortis arcu. Pellentesque ut rutrum arcu, ut placerat nibh. Cras gravida purus sit amet lacinia fringilla. Praesent vehicula sed tellus id rutrum. Donec pharetra, lacus eget vestibulum efficitur, est tellus suscipit mi, ac aliquet orci risus gravida metus. In non lectus justo. Aliquam pharetra congue vehicula. Suspendisse sollicitudin sollicitudin eleifend. Sed ac viverra lectus. </p>
           <h2 class="subtitulo-projeto">Nosso projeto</h2>
-          <p class="descricao-projeto">Este projeto foi criado como uma solução para melhorar a coleta de lixo eletrônico na cidade, conectando pontos de coleta com a comunidade jalrgdertfgbvrdthbtrgfbhrtfghbrtfghsdjiweegrovertg.</p>
-          <p class="descricao-projeto">Utilizamos um mapa interativo, estatísticas visuais e informações claras para facilitar o descarte correto de equipamentos eletrônicos etrinhgdretuhgbjrdstgnsrdtihugjriugjrdtu.</p>
-          <p class="descricao-projeto">O objetivo é aumentar a conscientização ambiental e incentivar práticas mais sustentáveis entre os usuários ytjntyn thynjtytyghbtyhrthbrtyhytjnyt.</p>
+          <p class="descricao-projeto">O EcoPoint é uma iniciativa tecnológica e sustentável desenvolvida para incentivar o descarte correto de resíduos eletrônicos em São Borja. O projeto integra uma plataforma web com sistemas embarcados utilizando Arduino, criando uma solução moderna e acessível para auxiliar a população na destinação adequada de aparelhos eletrônicos inutilizados. A proposta busca unir inovação, educação ambiental e responsabilidade social em uma única ferramenta.</p>
+          <p class="descricao-projeto">A plataforma permite que os usuários tenham acesso a informações sobre lixo eletrônico, pontos de coleta, materiais aceitos e orientações sobre reciclagem. Além disso, o sistema inteligente pode realizar o monitoramento dos coletores por meio de sensores, contribuindo para uma gestão mais eficiente dos resíduos e facilitando a organização da coleta. Dessa forma, o EcoPoint promove maior praticidade tanto para a comunidade quanto para os responsáveis pelo gerenciamento do descarte.</p>
+          <p class="descricao-projeto">Com o avanço constante da tecnologia e o aumento do consumo de dispositivos eletrônicos, cresce também a quantidade de resíduos descartados de forma incorreta. Pensando nisso, o EcoPoint surge como uma alternativa sustentável para reduzir os impactos ambientais causados pelo lixo eletrônico, incentivando hábitos conscientes e colaborando para a preservação do meio ambiente. O projeto demonstra como a tecnologia pode ser utilizada de maneira positiva para gerar benefícios ambientais e sociais para toda a comunidade.</p>
         </div>
       </section>
 
@@ -64,7 +64,7 @@
           <li class="item-descarte"><img src="./assets/laptop-sem-fundo.png" alt="Computador"> Computadores e laptops</li>
           <li class="item-descarte"><img src="./assets/celular-sem-fundo.png" alt="Celular"> Celulares e tablets</li>
           <li class="item-descarte"><img src="./assets/impressora-sem-fundo.png" alt="Impressora"> Impressoras e periféricos</li>
-          <li class="item-descarte"><img src="./assets/baterias.jpg" alt="Bateria"> Baterias e carregadores</li>
+          <li class="item-descarte"><img src="./assets/pilha.png" alt="Bateria"> Baterias e carregadores</li>
           <li class="item-descarte"><img src="./assets/monitor-sem-fundo.png" alt="Monitor"> Televisores e monitores</li>
         </ul>
       </section>
@@ -109,17 +109,46 @@
 
         <section class="secao-graficos">
           <div class="grafico">
-            <h2 class="grafico-titulo">Gráfico de Crescimento</h2>
-            <div class="grafico-box">
-              <p class="grafico-legenda">Placeholder para gráfico</p>
-            </div>
-          </div>
 
-          <div class="grafico">
-            <h2 class="grafico-titulo">Distribuição de Coleta</h2>
-            <div class="grafico-box">
-              <p class="grafico-legenda">Placeholder para gráfico</p>
-            </div>
+  <h2 class="grafico-titulo">
+    Você conhece os pontos de coleta de lixo eletrônico da sua cidade?
+  </h2>
+
+  <div class="grafico-box">
+    <canvas id="graficoTipos"></canvas>
+  </div>
+
+</div>
+<div class="grafico">
+  <h2 class="grafico-titulo">
+    Conhecimento sobre lixo eletrônico
+  </h2>
+
+  <div class="grafico-box">
+    <canvas id="graficoConhecimento"></canvas>
+  </div>
+</div>
+
+<div class="grafico">
+  <h2 class="grafico-titulo">
+    Consequências do descarte incorreto
+  </h2>
+
+  <div class="grafico-box">
+    <canvas id="graficoConsequencias"></canvas>
+  </div>
+</div>
+
+<div class="grafico">
+  <h2 class="grafico-titulo">
+    Pessoas que guardam lixo eletrônico
+  </h2>
+
+  <div class="grafico-box">
+    <canvas id="graficoGuardam"></canvas>
+  </div>
+</div>
+          
         </section>
 </section>
 
@@ -132,20 +161,12 @@
             <li class="participante_2"><strong>Arthur Rigon</strong></li>
             <li class="participante_3"><strong>Bernardo Pimentel</strong></li>
             <li class="participante_4"><strong>Bruno Ortiz</strong></li>
-          </ul>
-
-          <ul class="participantes_2-list">
-            <li class="participante_5"><strong>Henrique da Vida</strong></li>
-            <li class="participante_6"><strong>Matheus Olea</strong></li>
-            <li class="participante_7"><strong>Vicente Oliveski</strong></li>
-
-
-          </ul>         
-           <h2 class="titulo-orientadores">Orientadores</h2>
-          <p class="orientadores-intro">Conheça os orientadores do projeto</p>
-          <ul class="orientadores-ul">
-            <li class="orientadores"><strong>Claiton Correa</strong></li>
-            <li class="orientadores"><strong>Ícaro Iglesias</strong></li>
+            <li class="participante_5"><strong>Claiton Correa</strong></li>
+            <li class="participante_6"><strong>Henrique da Vida</strong></li>
+            <li class="participante_7"><strong>Ícaro Iglesias</strong></li>
+            <li class="participante_8"><strong>Mateus Olea</strong></li>
+            <li class="participante_9"><strong>Vicente Oliveski</strong></li>
+            
           </ul>
         </section>
 
@@ -160,11 +181,14 @@
     <footer class="rodape">
       <a href="#" class="footer_texto">Links</a> |
       <a href="#" class="footer_texto">Contato</a> |
-      <a href="#" class="footer_texto">Redes Sociais</a> | © 2026 EcoTech
+      <a href="#" class="footer_texto">Redes Sociais</a> | © 2026 EcoPoint
     </footer>
    
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="./js/mapa.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/graficos.js"></script>
   </body>
 </html>
