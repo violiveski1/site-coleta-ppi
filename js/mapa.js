@@ -19,5 +19,5 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // marcador
 L.marker([-28.66745003818483, -55.99457590723304])
     .addTo(map)
-    .bindPopup("Instituto Federal Farroupilha - Campus São Borja");
+    .bindPopup("O Instituto Federal Farroupilha (IFFar) - Campus São Borja está localizado na Rua Otaviano Castilho Mendes, nº 355, Bairro Betim, São Borja/RS (CEP: 97670-000).");
 

@@ -77,7 +77,3 @@ function criarGraficoPizza(id, dados) {
 }
 
 carregarGraficos();
-
-setInterval(() => {
-  location.reload();
-}, 10000);
