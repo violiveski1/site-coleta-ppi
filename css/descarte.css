@@ -21,12 +21,22 @@
 .lista-descarte {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  grid-template-areas: 
+  "fone cel teclado"
+  "bat tv car"
+  ". con .";
   gap: 14px;
   padding: 0;
 }
 
-.item-descarte {
+.item-descarte-bat,
+.item-descarte-car,
+.item-descarte-cel,
+.item-descarte-control,
+.item-descarte-fon,
+.item-descarte-tec,
+.item-descarte-tv {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -36,9 +46,46 @@
   border-radius: 12px;
 }
 
-.lista-descarte img {
-  width: 64px;
+.cabo, .tv, .bateria {
+  width: 58px;
   height: auto;
   display: block;
   object-fit: contain;
+}
+
+.celular, .fone, .teclado {
+  width: 45px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.controle {
+  width: 100px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.item-descarte-fon {
+  grid-area: fone;
+}
+.item-descarte-tec {
+  grid-area: teclado;
+}
+.item-descarte-tv {
+  grid-area: tv;
+}
+.item-descarte-cel {
+  grid-area: cel;
+}
+.item-descarte-car {
+  grid-area: car;
+}
+.item-descarte-bat {
+  grid-area: bat;
+}
+.item-descarte-control {
+  grid-area: con;
+
 }
