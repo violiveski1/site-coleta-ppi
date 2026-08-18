@@ -1,0 +1,89 @@
+# Documentação Técnica – Projeto Site Coleta PPI
+Período: 12/04/2026 – 14/07/2026
+
+## Visão Geral
+Este documento reúne todas as alterações realizadas a partir de 12 de abril de 2026 no projeto *Site Coleta PPI*, abrangendo desenvolvimento de interface, funcionalidades de coleta e análise de dados, ajustes de layout, integração de APIs e aprimoramentos de infraestrutura.
+
+## Principais Áreas de Atuação
+### 1. Header e Navegação
+- Implementação de cabeçalho fixo ao rolar a página.
+- Adição de item de navegação “Participantes”.
+- Melhoria da estrutura da lista de navegação com grid responsivo.
+- Ajustes de padding, gap e alinhamento dos itens de navegação.
+- Criação de estilos de cabeçalho com grid e media queries.
+
+### 2. Experiência de Scroll
+- Efeito de smooth scroll ao navegar entre sections.
+- Escondimento automático do header ao rolar para baixo.
+- Fixação do header no topo para acesso constante.
+
+### 3. Seção de Descarte
+- Criação de listas de descarte com novos assets.
+- Layout de colunas responsivo (3, 2 ou 1 coluna) para diferentes dispositivos.
+- Estilização de imagens e textos associados.
+
+### 4. Gráficos e Visualização de Dados
+- Reescrita de layout de gráficos para uso de gráficos de pizza.
+- Geração dinâmica de gráficos a partir de respostas de pesquisa sobre lixo eletrônico.
+- Integração de biblioteca Chart.js (ou similar) para renderização de pizza charts.
+- Estilização de containers de gráficos via CSS customizado.
+
+### 5. Mapa Interativo
+- Integração do Leaflet para exibição de mapa de coleta.
+- Botões de interação vinculados ao mapa (ex.: “Ver no mapa”).
+- Fixação de botões acima do header mediante ajustes de CSS.
+
+### 6. Seção “Sobre” e Informações de Sustentabilidade
+- Inclusão de conteúdo sobre ODS 12 e contexto institucional.
+- Atualização de logotipo para identidade “EcOPoint”.
+- Ajustes de tipografia e cores no footer.
+
+### 7. Responsividade e Layout
+- Implementação de breakpoints para aplicações web.
+- Uso de Google Fonts (Merriweather, Inter) via preconnect e estilos.
+- Definição de variáveis de fonte e espaçamento no CSS principal.
+- Ajustes de margem e padding para títulos e descrições de estatísticas.
+
+### 8. Footer
+- Fixação do rodapé ao final da página.
+- Atualização de links e styling do footer.css.
+- Consistência visual com o resto da aplicação.
+
+## Arquitetura de Diretórios
+```
+/assets          → imagens, ícones e recursos gráficos.
+ /css             → estilosheet individuais (cabecalho.css, footer.css, styles.css, etc.).
+ /js              → scripts JavaScript (scroll.js, mapa.js, graficos.js, etc.).
+ /easteregg      → recursos de easter egg (arquivos de áudio, jogos etc.).
+ index.html       → página principal.
+ sobre.html       → página “Sobre”.
+ estatisticas.html→ página de estatísticas.
+```
+
+## Tecnologias Empregadas
+- **HTML5** e **CSS3** (Flexbox, Grid, Media Queries).
+- **JavaScript** (ES6+) para manipulação DOM, scroll e geração de gráficos.
+- **Leaflet** para mapas interativos.
+- **Google Fonts** (Merriweather, Inter) para tipografia.
+- **Chart.js** (ou biblioteca similar) para gráficos de pizza.
+- **npm** para gerenciamento de dependências (caso haja scripts de build).
+
+## Infraestrutura e Build
+- Estrutura de arquivos estáticos servida por um servidor local (ex.: `npm run dev`).
+- Uso de `webpack`/`vite`? (verificar scripts no package.json).
+- Configuração de `scripts` npm para lint, typecheck e testes (ver `package.json`).
+
+## Testes & Qualidade
+- Commit messages indicam correções de bugs (ex.: animações quebugadas, ajuste de layout).
+- Implementação de testes unitários não detalhados nos mensajes, mas presumindo uso de frameworks como Jest ou Mocha (ver diretório `tests/` caso exista).
+- Uso de `npm run lint` e `npm run typecheck` recomendado para manter qualidade de código (conforme instruções do projeto).
+
+## Próximos Passos
+- Refatorar código JavaScript para modularização maior.
+- Implementar testes automatizados para funções de scroll e manipulação de mapa.
+- Adicionar fallback para navegadores sem suporte a CSS Grid.
+- Melhorar acessibilidade (ARIA labels, contraste de cores).
+- Expandir dataset de pesquisas de lixo eletrônico para gráficos mais detalhados.
+
+---  
+*Este documento será mantido e atualizado à medida que novas features forem implementadas.*

@@ -1,0 +1,78 @@
+Documentação Técnica – Site Coleta PPI (12/04/2026 a 14/07/2026)
+
+Visão geral
+------------
+Este documento descreve todas as alterações realizadas no projeto Site Coleta PPI entre 12 de abril e 14 de julho de 2026. As mudanças abrangem a estrutura de navegação, efeitos de scroll, seção de descarte, gráficos de pizza, mapa interativo, conteúdo de sustentabilidade, responsividade, footer e ajustes de styling.
+
+Áreas de desenvolvimento
+------------------------
+1. Header e navegação
+   - Header fixo ao rolar a página.
+   - Adição de item de navegação “Participantes”.
+   - Estrutura de lista de navegação baseada em grid responsivo.
+   - Ajustes de padding, gap e alinhamento dos itens.
+   - Criação de estilos de header com grid e media queries.
+
+2. Experiência de scroll
+   - Implementação de smooth scroll entre sections.
+   - Esconder automaticamente o header ao rolar para baixo.
+   - Fixação do header no topo para acesso contínuo.
+
+3. Seção de descarte
+   - Criação de listas de descarte com novos assets.
+   - Layout de colunas responsivo (3, 2 ou 1 coluna) adaptando-se ao tamanho da tela.
+   - Estilização de imagens e textos associados.
+
+4. Gráficos e visualização de dados
+   - Reescrita do layout de gráficos para uso de gráficos de pizza.
+   - Geração dinâmica de gráficos a partir de respostas de pesquisa sobre lixo eletrônico.
+   - Integração de biblioteca Chart.js (ou similar) para renderização de pizza charts.
+   - Estilização de containers de gráficos via CSS customizado.
+
+5. Mapa interativo
+   - Integração do Leaflet para exibição do mapa de coleta.
+   - Botões de ação vinculados ao mapa (ex.: “Ver no mapa”).
+   - Fixação de botões acima do header mediante ajustes de CSS.
+
+6. Seção “Sobre” e informações de sustentabilidade
+   - Inclusão de conteúdo sobre ODS 12 e contexto institucional.
+   - Atualização do logotipo para identidade “EcOPoint”.
+   - Ajustes de tipografia e cores no footer.
+
+7. Responsividade e layout
+   - Implementação de breakpoints para diferentes dispositivos.
+   - Uso de Google Fonts (Merriweather, Inter) via preconnect e estilos.
+   - Definição de variáveis de fonte e espaçamento no CSS principal.
+   - Ajustes de margem e padding para títulos e descrições de estatísticas.
+
+8. Footer
+   - Fixação do rodapé ao final da página.
+   - Atualização de links e styling do footer.css.
+   - Consistência visual com o restante da aplicação.
+
+Arquitetura de diretórios
+------------------------
+/assets          → imagens, ícones e recursos gráficos.
+ /css             → stylesheets individuais (cabecalho.css, footer.css, styles.css, etc.).
+ /js              → scripts JavaScript (scroll.js, mapa.js, graficos.js, etc.).
+ index.html       → página principal.
+ sobre.html       → página “Sobre”.
+ estatisticas.html→ página de estatísticas.
+
+ Tecnologias empregadas
+------------------------
+- HTML5 e CSS3 (Flexbox, Grid, Media Queries).
+- JavaScript ES6+ para manipulação DOM, scroll e geração de gráficos.
+- Leaflet para mapas interativos.
+- Google Fonts (Merriweather, Inter) para tipografia.
+- Chart.js ou biblioteca similar para gráficos de pizza.
+- npm para gerenciamento de dependências; scripts de build e lint disponíveis no package.json.
+
+ Testes e qualidade
+--------------------
+- Mensagens de commit indicam correções de bugs (ex.: animações problemáticas, ajuste de layout).
+- Suposição de uso de frameworks de teste como Jest ou Mocha, caso existam diretórios de teste.
+- Recomendação de execução de npm run lint e npm run typecheck antes de merges.
+
+
+Este documento será atualizado conforme novas funcionalidades forem implementadas.
