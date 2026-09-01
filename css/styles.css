@@ -13,20 +13,20 @@
 
 
 :root {
-    --cor-texto-principal: #1a5f05;
+    /* Paleta 60-30-10 */
+    --cor-fundo-geral: #e8f5e9;        /* 60% Verde claro - fundo */
+    --cor-nav-titulos: #1a237e;        /* 30% Azul escuro - nav, títulos */
+    --cor-destaque: #ff9800;           /* 10% Laranja - subtítulos, destaques */
+
+    --cor-texto-principal: #1a237e;
     --cor-texto-secundario: #5E6E89;
-    --cor-texto: #EFEFEF;
+    --cor-texto: #333333;
     --fonte-texto: "Inter", sans-serif;
     --fonte-titulo: "Merriweather", sans-serif;
 
-    --cor-links: #034a85;
+    --cor-links: #1a237e;
 
-    --cor-destaque-principal: #FF55DF;
-    --cor-destaque-secundario: #8FFF24;
-
-    --cor-fundo-botao: #0b56f7;
-
-    --cor-de-fundo: #FFFFFF;
+    --cor-de-fundo: #ffffff;
 }
 
 
@@ -44,8 +44,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f3f3f3;
-    color: #333;
+    background-color: var(--cor-fundo-geral);
+    color: var(--cor-texto);
 }
 
 main {
@@ -53,4 +53,40 @@ main {
     width: 90%;
     max-width: 1200px;
     margin: 150px auto 0;
+}
+
+/* Animações fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Lei de Gestalt - Grupos Visuais */
+.grupo-gestalt {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.grupo-contexto {
+    border-left: 5px solid var(--cor-nav-titulos);
+}
+
+.grupo-acao {
+    border-left: 5px solid var(--cor-destaque);
+}
+
+.grupo-dados {
+    border-left: 5px solid #4caf50;
+}
+
+.grupo-equipe {
+    border-left: 5px solid #9c27b0;
 }

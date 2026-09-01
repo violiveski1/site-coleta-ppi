@@ -12,10 +12,17 @@
     text-align: center;
     font-family: var(--fonte-titulo);
     margin-bottom: 10px;
+    color: var(--cor-nav-titulos);
 }
 .texto-estatisticas {
     font-family: var(--fonte-texto);
     text-indent: 30px;
+    line-height: 1.8;
+}
+
+.estatisticas-paragrafo {
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
 }
 .descricao-estatisticas {
     text-align: center;
@@ -34,7 +41,7 @@
 .card-estatistica h2 {
     font-size: 32px;
     margin-bottom: 10px;
-    color: #555;
+    color: var(--cor-nav-titulos);
 }
 
 .card-estatistica p {

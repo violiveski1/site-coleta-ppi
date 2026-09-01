@@ -1,16 +1,16 @@
 .rodape {
     width: 100%;
-    background-color: #d9d9d9;
+    background-color: var(--cor-nav-titulos);
     padding: 20px 0;
     text-align: center;
-    border-top: 1px solid #bcbcbc;
+    border-top: 3px solid var(--cor-destaque);
     font-size: 18px;
-    color: #555;
+    color: #ffffff;
 }
 
 .footer_texto {
     text-decoration: none;
-    color: inherit;
+    color: var(--cor-destaque);
 }
 
 

@@ -53,6 +53,7 @@
 
 .titulo-mapa{
     font-family: var(--fonte-titulo);
+    color: var(--cor-nav-titulos);
 }
 
 .estatistica-valor{

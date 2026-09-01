@@ -6,9 +6,9 @@
     width: 100%;
     transition: transform 1s ease, opacity 0.8s ease;
     z-index: 999;
-    background-color: #d9d9d9;
+    background-color: var(--cor-nav-titulos);
     padding: 20px 40px;
-    border-bottom: 1px solid #bcbcbc;
+    border-bottom: 3px solid var(--cor-destaque);
 }
 .cabecalho.escondido {
   transform: translateY(-100%);
@@ -36,7 +36,7 @@
     font-weight: 500;
     cursor: pointer;
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: #ffffff;
     transform: translateY(-50%);
 }
 

@@ -30,6 +30,7 @@
 .subtitulo-participantes {
   text-align: center;
   font-family: var(--fonte-titulo);
+  color: var(--cor-destaque);
 }
 .participantes-intro {
     font-weight: bold;
@@ -104,4 +105,25 @@
   margin-bottom: 8px;
   color: #222;
   font-size: 1.05rem;
+}
+
+.participante-card {
+  background-color: #f8f8f8;
+  border: 1px solid #d9d9d9;
+  padding: 20px 40px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 200px;
+}
+
+.participante-card strong {
+  color: var(--cor-nav-titulos);
+  font-size: 1.1rem;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--cor-nav-titulos);
+  border-radius: 50%;
+  padding: 10px;
 }
