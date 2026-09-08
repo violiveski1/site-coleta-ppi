@@ -16,15 +16,16 @@
 }
 
 .cabecalho__nav_list {
-    display: grid;
-    grid-template-columns: 2fr 100px 75px 100px 100px;
+    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     list-style: none;
-    gap: 30px;
     margin-left: 10px;
 }
 
 .cabecalho__logo {
-    margin-right: 300px;
+    margin-right: auto;
 }
 .logo {
     width: 60px;
@@ -45,6 +46,11 @@
     .cabecalho__nav_list {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 20px;
+    }
+
+    .cabecalho__logo {
+        margin-right: 0;
     }
 }
 
