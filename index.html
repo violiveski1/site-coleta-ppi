@@ -41,6 +41,7 @@
     </header>
 
     <main>
+      <div id="noticias"></div>
       <!-- GRUPO 1: CONTEXTO E INFORMAÇÃO -->
       <div class="grupo-gestalt grupo-contexto">
          <section class="secao-sobre">
@@ -183,7 +184,15 @@
       <section class="secao-mapa" id="mapa">
         <div class="mapa-container">
           <h1 class="titulo-mapa">Mapa de Pontos de Coleta</h1>
-          <div id="map"></div>
+
+<div class="mapa-controles">
+  <button type="button" id="btnLocalizacao" class="btn-mapa">📍 Minha localização</button>
+  <button type="button" id="btnRota" class="btn-mapa">🧭 Traçar rota</button>
+  <button type="button" id="btnLimparRota" class="btn-mapa btn-mapa--sec">Limpar rota</button>
+</div>
+
+<div id="map"></div>
+<div id="infoRota" class="info-rota">Clique em um EcoPoint no mapa para traçar a rota até ele.</div>
         </div>
 
         <aside class="estatisticas-laterais">
@@ -330,6 +339,6 @@
   <script src="js/scroll.js"></script>
   <script src="js/animacoes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+  <script src="./js/noticias.js"></script>
   </body>
 </html>
