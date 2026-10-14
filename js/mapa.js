@@ -4,8 +4,11 @@
 
 const mapa = L.map("map").setView([-28.6600, -56.0040], 13);
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; OpenStreetMap contributors"
+// OpenTopoMap - gratuito, sem API key, sem bloqueio
+L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://opentopomap.org'>OpenTopoMap</a>",
+    maxZoom: 17,
+    subdomains: "abc"
 }).addTo(mapa);
 
 

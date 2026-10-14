@@ -1,344 +1,600 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="./assets/logo_generica_sem-fundo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EcoPoint</title>
+    <meta name="description" content="EcoPoint - Plataforma para descarte correto de resíduos eletrônicos em São Borja. Encontre pontos de coleta, aprenda sobre reciclagem e contribua com a sustentabilidade." />
+    <meta name="theme-color" content="#1b5e20" />
+    <link rel="icon" type="image/png" href="./assets/logo_generica_sem-fundo.png" />
+    <link rel="apple-touch-icon" href="./assets/logo_generica_sem-fundo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>EcoPoint - Descarte Consciente de Eletrônicos em São Borja</title>
   </head>
-
-  <body id="inicio">
-    <header class="cabecalho">
-      <nav class="cabecalho__nav">
-        <ul class="cabecalho__nav_list">
-          <li class="cabecalho__logo">
-            <a href="#inicio">
-              <img
-                src="./assets/logo_generica_sem-fundo.png"
-                class="logo"
-                alt="Logo EcoTech"
-              />
-            </a>
-          </li>
-          <li class="cabecalho__nav_item">
-            <a href="#descarte" class="nav_texto">Descarte</a>
-          </li>
+  <body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    
+    <header class="header" role="banner">
+      <div class="container header-inner">
+        <a href="#inicio" class="header-logo" aria-label="EcoPoint - Página inicial">
+          <img src="./assets/logo_generica_sem-fundo.png" alt="" width="48" height="48" />
+          <span class="header-logo-text">EcoPoint</span>
+        </a>
+        
+        <nav class="nav" role="navigation" aria-label="Navegação principal">
+          <button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
           
-          <li class="cabecalho__nav_item">
-            <a href="#mapa" class="nav_texto">Mapa</a>
-          </li>
-          <li class="cabecalho__nav_item">
-            <a href="#estatisticas" class="nav_texto">Estatísticas</a>
-          </li>
-            <li class="cabecalho__nav_item">
-              <a href="#participantes" class="nav_texto">Participantes</a>
-            </li>
-        </ul>
-      </nav>
+          <ul id="nav-menu" class="nav-menu">
+            <li><a href="#inicio" class="nav-link">Início</a></li>
+            <li><a href="#descarte" class="nav-link">Como Descartar</a></li>
+            <li><a href="#mapa" class="nav-link">Pontos de Coleta</a></li>
+            <li><a href="#estatisticas" class="nav-link">Estatísticas</a></li>
+            <li><a href="#sobre" class="nav-link">Sobre o Projeto</a></li>
+            <li><a href="#equipe" class="nav-link">Equipe</a></li>
+          </ul>
+        </nav>
+        
+        <a href="#mapa" class="btn btn-primary header-cta">Encontrar Ponto</a>
+      </div>
     </header>
-
-    <main>
-      <div id="noticias"></div>
-      <!-- GRUPO 1: CONTEXTO E INFORMAÇÃO -->
-      <div class="grupo-gestalt grupo-contexto">
-         <section class="secao-sobre">
-        <h2 class="titulo-sobre">Sobre a Coleta de Lixo Eletrônico</h2>
-        
-        <div class="accordion" id="accordionSobre">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                O que é Lixo Eletrônico?
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionSobre">
-              <div class="accordion-body">
-                <p class="texto-sobre">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tellus ullamcorper, convallis urna vel, commodo tortor. Duis pulvinar tempus elit, nec elementum diam tempor sed. Quisque vulputate tellus augue, a pellentesque purus fringilla in. Aenean pulvinar, ipsum a interdum sodales, nulla mi interdum elit, vitae malesuada lacus nulla vel orci. Pellentesque id ante a mauris accumsan molestie sit amet quis libero.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Por que é importante descartar corretamente?
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionSobre">
-              <div class="accordion-body">
-                <p class="texto-sobre">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tellus ullamcorper, convallis urna vel, commodo tortor. Duis pulvinar tempus elit, nec elementum diam tempor sed. Quisque vulputate tellus augue, a pellentesque purus fringilla in. Aenean pulvinar, ipsum a interdum sodales, nulla mi interdum elit, vitae malesuada lacus nulla vel orci. Pellentesque id ante a mauris accumsan molestie sit amet quis libero.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Impactos ambientais
-              </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionSobre">
-              <div class="accordion-body">
-                <p class="texto-sobre">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tellus ullamcorper, convallis urna vel, commodo tortor. Duis pulvinar tempus elit, nec elementum diam tempor sed. Quisque vulputate tellus augue, a pellentesque purus fringilla in. Aenean pulvinar, ipsum a interdum sodales, nulla mi interdum elit, vitae malesuada lacus nulla vel orci. Pellentesque id ante a mauris accumsan molestie sit amet quis libero.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-          <h2 class="subtitulo-projeto">Nosso projeto</h2>
-          <p class="descricao-projeto">O EcoPoint é uma iniciativa tecnológica e sustentável desenvolvida para incentivar o descarte correto de resíduos eletrônicos em São Borja. O projeto integra uma plataforma web com sistemas embarcados utilizando Arduino, criando uma solução moderna e acessível para auxiliar a população na destinação adequada de aparelhos eletrônicos inutilizados. A proposta busca unir inovação, educação ambiental e responsabilidade social em uma única ferramenta.</p>
-          <p class="descricao-projeto">A plataforma permite que os usuários tenham acesso a informações sobre lixo eletrônico, pontos de coleta, materiais aceitos e orientações sobre reciclagem. Além disso, o sistema inteligente pode realizar o monitoramento dos coletores por meio de sensores, contribuindo para uma gestão mais eficiente dos resíduos e facilitando a organização da coleta. Dessa forma, o EcoPoint promove maior praticidade tanto para a comunidade quanto para os responsáveis pelo gerenciamento do descarte.</p>
-          <p class="descricao-projeto">Com o avanço constante da tecnologia e o aumento do consumo de dispositivos eletrônicos, cresce também a quantidade de resíduos descartados de forma incorreta. Pensando nisso, o EcoPoint surge como uma alternativa sustentável para reduzir os impactos ambientais causados pelo lixo eletrônico, incentivando hábitos conscientes e colaborando para a preservação do meio ambiente. O projeto demonstra como a tecnologia pode ser utilizada de maneira positiva para gerar benefícios ambientais e sociais para toda a comunidade.</p>
-        </div>
-      </section>
-
-      <section class="ods">
-        <h1 class="ods-titulo">ODS Relacionados ao Projeto</h1>
-        
-        <div class="titulo">
-            <h2>O EcoPoint contribui para os Objetivos de Desenvolvimento Sustentável da ONU</h2>
-            <p>
-                Nosso projeto de coleta de lixo eletrônico impacta diretamente 4 ODS, promovendo
-                consumo responsável, cidades sustentáveis, ação climática e inovação industrial.
+    
+    <main id="main-content" role="main">
+      <!-- Hero Section -->
+      <section id="inicio" class="hero" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-content animate-on-scroll">
+            <span class="hero-badge badge badge-primary">PPI 2026 - IFFar Campus São Borja</span>
+            <h1 id="hero-title" class="hero-title">
+              Descarte seu eletrônico <span class="text-primary">com responsabilidade</span>
+            </h1>
+            <p class="hero-subtitle">
+              O EcoPoint conecta você aos pontos de coleta de resíduos eletrônicos em São Borja.
+              Encontre onde descartar, aprenda o preparo correto e ajude a proteger o meio ambiente.
             </p>
-        </div>
-
-        <div class="ods-container">
-
-            <div class="ods-card">
-                <span class="ods-icon"><img src="assets/ods-12.svg" alt="ODS 12"></span>
-                <h3>ODS 12 - Consumo e Produção Responsáveis</h3>
-                <p class="meta">Metas 12.4 e 12.8</p>
-                <p>
-                    O EcoPoint auxilia na destinação correta de resíduos eletrônicos, evitando o descarte inadequado 
-                    de materiais que podem contaminar o solo, a água e o meio ambiente. Além disso, o projeto busca 
-                    informar e conscientizar a população sobre a importância da reciclagem através da plataforma web.
-                </p>
+            <div class="hero-actions" style="display:flex;gap:var(--spacing-4);flex-wrap:wrap;margin-top:var(--spacing-6);">
+              <a href="#mapa" class="btn btn-primary btn-lg">Encontrar Ponto de Coleta</a>
+              <a href="#descarte" class="btn btn-secondary btn-lg">Aprender a Descartar</a>
             </div>
-
-            <div class="ods-card">
-                <span class="ods-icon"><img src="assets/ods-11.svg" alt="ODS 11"></span>
-                <h3>ODS 11 - Cidades e Comunidades Sustentáveis</h3>
-                <p class="meta">Meta 11.6</p>
-                <p>
-                    Ao oferecer pontos de coleta acessíveis e monitoramento inteligente dos coletores, o EcoPoint 
-                    contribui para reduzir o impacto ambiental negativo per capita nas cidades, melhorando a gestão 
-                    de resíduos e a qualidade do ar e do solo em áreas urbanas.
-                </p>
-            </div>
-
-            <div class="ods-card">
-                <span class="ods-icon"><img src="assets/ods-13.svg" alt="ODS 13"></span>
-                <h3>ODS 13 - Ação Contra a Mudança Global do Clima</h3>
-                <p class="meta">Meta 13.3</p>
-                <p>
-                    O descarte correto de eletrônicos evita a emissão de gases de efeito estufa provenientes da 
-                    decomposição inadequada e da extração de novas matérias-primas. O projeto promove a educação 
-                    climática conscientizando sobre a pegada de carbono dos resíduos eletrônicos.
-                </p>
-            </div>
-
-            <div class="ods-card">
-                <span class="ods-icon"><img src="assets/ods-9.svg" alt="ODS 9"></span>
-                <h3>ODS 9 - Indústria, Inovação e Infraestrutura</h3>
-                <p class="meta">Metas 9.4 e 9.5</p>
-                <p>
-                    O EcoPoint integrará sistemas embarcados (Arduino) com plataforma web, criando infraestrutura 
-                    tecnológica inovadora para gestão de resíduos. Promove a modernização industrial através da 
-                    reciclagem e recuperação de materiais valiosos dos eletrônicos descartados.
-                </p>
-            </div>
-
-        </div>
-      </section>
-      </div>
-
-      <!-- GRUPO 2: AÇÃO E DESCARTE -->
-      <div class="grupo-gestalt grupo-acao">
-      <section class="secao-descarte" id="descarte">
-
-        <h1 class="titulo-descarte">Como Descartar Lixo Eletrônico</h1>
-        <p class="texto-descarte">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed tellus ullamcorper, convallis urna vel, commodo tortor. Duis pulvinar tempus elit, nec elementum diam tempor sed. Quisque vulputate tellus augue, a pellentesque purus fringilla in. Aenean pulvinar, ipsum a interdum sodales, nulla mi interdum elit, vitae malesuada lacus nulla vel orci. Pellentesque id ante a mauris accumsan molestie sit amet quis libero. Integer vulputate quis elit non rutrum. Praesent lectus urna, congue consectetur luctus vitae, maximus vitae lacus. Phasellus volutpat lobortis arcu. Pellentesque ut rutrum arcu, ut placerat nibh. Cras gravida purus sit amet lacinia fringilla. Praesent vehicula sed tellus id rutrum. Donec pharetra, lacus eget vestibulum efficitur, est tellus suscipit mi, ac aliquet orci risus gravida metus. In non lectus justo. Aliquam pharetra congue vehicula. Suspendisse sollicitudin sollicitudin eleifend. Sed ac viverra lectus.</p>
-        <h1 class="titulo-descarte">O que pode ser descartado?</h1>
-        <p class="texto-descarte">Os seguintes equipamentos eletrônicos podem ser descartados em pontos de coleta:</p>
-
-        <ul class="lista-descarte">
-
-          <li class="item-descarte-fon"><img src="./assets/fone de ouvido.jpg" alt="Fone de Ouvido" class="fone"> Fones de Ouvido</li>
-          <li class="item-descarte-cel"><img src="./assets/celular-sem-fundo.png" alt="Celular" class="celular"> Celulares e tablets</li>
-          <li class="item-descarte-tec"><img src="./assets/teclado.jpg" alt="Teclado" class="teclado"> Teclado e periféricos</li>
-          <li class="item-descarte-bat"><img src="./assets/pilha.png" alt="Bateria" class="bateria"> Baterias e Pilhas</li>
-          <li class="item-descarte-tv"><img src="./assets/monitor-sem-fundo.png" alt="Monitor" class="tv"> Televisores e monitores</li>
-          <li class="item-descarte-car"><img src="./assets/carregador.jpg" alt="Monitor" class="cabo"> Carregadores e Cabos</li>
-          <li class="item-descarte-control"><img src="./assets/controle_r.jpg" alt="Monitor" class="controle"> Controles Remotos</li>
-
-        </ul>
-      </section>
-      </div>
-
-      <!-- GRUPO 3: DADOS E LOCALIZAÇÃO -->
-      <div class="grupo-gestalt grupo-dados">
-      <section class="secao-mapa" id="mapa">
-        <div class="mapa-container">
-          <h1 class="titulo-mapa">Mapa de Pontos de Coleta</h1>
-
-<div class="mapa-controles">
-  <button type="button" id="btnLocalizacao" class="btn-mapa">📍 Minha localização</button>
-  <button type="button" id="btnRota" class="btn-mapa">🧭 Traçar rota</button>
-  <button type="button" id="btnLimparRota" class="btn-mapa btn-mapa--sec">Limpar rota</button>
-</div>
-
-<div id="map"></div>
-<div id="infoRota" class="info-rota">Clique em um EcoPoint no mapa para traçar a rota até ele.</div>
-        </div>
-
-        <aside class="estatisticas-laterais">
-          <div class="card-estatistica">
-            <h2 class="estatistica-valor">KG</h2>
-            <p class="estatistica-texto">Coletados por mês</p>
-          </div>
-
-          <div class="card-estatistica">
-            <h2 class="estatistica-valor">N</h2>
-            <p class="estatistica-texto">Pontos de coleta</p>
-          </div>
-
-          <div class="card-estatistica">
-            <h2 class="estatistica-valor">%</h2>
-            <p class="estatistica-texto">Reciclagem eficiente</p>
-          </div>
-        </aside>
-      </section>
-
-      <section class="secao-estatisticas" id="estatisticas">
-        <div class="estatisticas-intro">
-          <h1 class="titulo-estatisticas">Estatísticas da Coleta</h1>
-          <p class="descricao-estatisticas">Veja os principais indicadores e o desempenho do sistema de coleta de lixo eletrônico.</p>
-        </div>
-
-        <div class="texto-estatisticas">
-          <p class="estatisticas-paragrafo">Placeholder para texto de estatísticas. Aqui será exibido um resumo geral sem valores definidos.</p>
-          <p class="estatisticas-paragrafo">Placeholder para detalhe de indicadores. Este espaço mostra informações de forma descritiva.</p>
-          <p class="estatisticas-paragrafo">Placeholder para observações. Em breve, os dados reais aparecerão aqui.</p>
-        </div>
-       </div>
-
-        <section class="secao-graficos">
-          <div class="grafico">
-
-  <h2 class="grafico-titulo">
-    Pessoas que conhecem os pontos de coleta
-  </h2>
-
-  <div class="grafico-box">
-    <canvas id="graficoTipos"></canvas>
-  </div>
-
-</div>
-<div class="grafico">
-  <h2 class="grafico-titulo">
-    Conhecimento sobre lixo eletrônico
-  </h2>
-
-  <div class="grafico-box">
-    <canvas id="graficoConhecimento"></canvas>
-  </div>
-</div>
-
-<div class="grafico">
-  <h2 class="grafico-titulo">
-    Consequências do descarte incorreto
-  </h2>
-
-  <div class="grafico-box">
-    <canvas id="graficoConsequencias"></canvas>
-  </div>
-</div>
-
-<div class="grafico">
-  <h2 class="grafico-titulo">
-    Pessoas que guardam lixo eletrônico
-  </h2>
-
-  <div class="grafico-box">
-    <canvas id="graficoGuardam"></canvas>
-  </div>
-</div>
-          
-        </section>
-</section>
-      </div>
-
-      <!-- GRUPO 4: EQUIPE -->
-      <div class="grupo-gestalt grupo-equipe">
-      <section class="participantes" id="participantes">
-
-          <h2 class="subtitulo-participantes">Autores</h2>
-          <p class="participantes-intro">Conheça a equipe responsável pelo desenvolvimento do projeto:</p>
-          
-          <div id="carouselParticipantes" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="d-flex justify-content-center gap-4">
-                  <div class="participante-card"><strong>Alvaro Nolibos</strong></div>
-                  <div class="participante-card"><strong>Arthur Rigon</strong></div>
-                  <div class="participante-card"><strong>Bernardo Pimentel</strong></div>
-                </div>
+            <div class="hero-stats" style="display:flex;gap:var(--spacing-8);margin-top:var(--spacing-8);flex-wrap:wrap;">
+              <div class="hero-stat">
+                <span class="hero-stat-value" id="stat-pontos">—</span>
+                <span class="hero-stat-label">Pontos de Coleta</span>
               </div>
-              <div class="carousel-item">
-                <div class="d-flex justify-content-center gap-4">
-                  <div class="participante-card"><strong>Bruno Ortiz</strong></div>
-                  <div class="participante-card"><strong>Claiton Correa</strong></div>
-                  <div class="participante-card"><strong>Henrique da Vida</strong></div>
-                </div>
+              <div class="hero-stat">
+                <span class="hero-stat-value" id="stat-categorias">—</span>
+                <span class="hero-stat-label">Categorias Aceitas</span>
               </div>
-              <div class="carousel-item">
-                <div class="d-flex justify-content-center gap-4">
-                  <div class="participante-card"><strong>Ícaro Iglesias</strong></div>
-                  <div class="participante-card"><strong>Mateus Olea</strong></div>
-                  <div class="participante-card"><strong>Vicente Oliveski</strong></div>
+              <div class="hero-stat">
+                <span class="hero-stat-value" id="stat-participantes">—</span>
+                <span class="hero-stat-label">Participantes da Pesquisa</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hero-map-wrapper animate-on-scroll animation-delay-1">
+            <div class="hero-map-card card">
+              <div class="card-header">
+                <h2 class="card-title" style="margin:0;font-size:var(--fs-lg);">Mapa de Pontos - São Borja</h2>
+              </div>
+              <div class="card-body" style="padding:0;">
+                <div id="hero-map" class="hero-map" style="height:300px;"></div>
+                <div class="card-footer" style="padding:var(--spacing-4);">
+                  <a href="#mapa" class="btn btn-outline btn-sm">Ver mapa completo</a>
                 </div>
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselParticipantes" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselParticipantes" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Próximo</span>
-            </button>
           </div>
-          
-        </section>
-      </div>
-
-
-   
-
+        </div>
+      </section>
       
-
+      <!-- Quick Access Section -->
+      <section class="section section-sm bg-gray-50" aria-labelledby="quick-access-title">
+        <div class="container">
+          <header class="section-header section-header-center">
+            <h2 id="quick-access-title" class="section-title">Acesso Rápido</h2>
+            <div class="divider divider-center"></div>
+            <p class="section-subtitle">Encontre o que você precisa de forma direta</p>
+          </header>
+          
+          <div class="grid grid-4 quick-access-grid">
+            <a href="#mapa" class="quick-access-card card animate-on-scroll">
+              <div class="quick-access-icon bg-primary-bg text-primary" style="width:56px;height:56px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-4);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <h3 style="margin-bottom:var(--spacing-2);">Pontos de Coleta</h3>
+              <p class="text-muted" style="font-size:var(--fs-sm);margin:0;">Mapa interativo com locais em São Borja</p>
+            </a>
+            
+            <a href="#descarte" class="quick-access-card card animate-on-scroll animation-delay-1">
+              <div class="quick-access-icon bg-secondary-bg text-secondary" style="width:56px;height:56px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-4);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+              </div>
+              <h3 style="margin-bottom:var(--spacing-2);">O que Descartar</h3>
+              <p class="text-muted" style="font-size:var(--fs-sm);margin:0;">Categorias aceitas e preparo correto</p>
+            </a>
+            
+            <a href="#educativo" class="quick-access-card card animate-on-scroll animation-delay-2">
+              <div class="quick-access-icon bg-accent-bg text-accent" style="width:56px;height:56px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-4);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+              </div>
+              <h3 style="margin-bottom:var(--spacing-2);">Educação Ambiental</h3>
+              <p class="text-muted" style="font-size:var(--fs-sm);margin:0;">Impactos, reciclagem e consumo consciente</p>
+            </a>
+            
+            <a href="#estatisticas" class="quick-access-card card animate-on-scroll animation-delay-3">
+              <div class="quick-access-icon bg-gray-100 text-gray-700" style="width:56px;height:56px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-4);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              </div>
+              <h3 style="margin-bottom:var(--spacing-2);">Estatísticas</h3>
+              <p class="text-muted" style="font-size:var(--fs-sm);margin:0;">Dados da pesquisa e indicadores</p>
+            </a>
+          </div>
+        </div>
+      </section>
       
+      <!-- Educational Content Section -->
+      <section id="educativo" class="section" aria-labelledby="educativo-title">
+        <div class="container">
+          <header class="section-header section-header-center">
+            <h2 id="educativo-title" class="section-title">Educação Ambiental</h2>
+            <div class="divider divider-center"></div>
+            <p class="section-subtitle">Entenda os impactos e aprenda práticas sustentáveis</p>
+          </header>
+          
+          <div class="grid grid-3">
+            <article class="card animate-on-scroll">
+              <div class="card-body">
+                <div class="card-icon bg-primary-bg text-primary" style="width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-4);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3>O que é Lixo Eletrônico</h3>
+                <p class="text-muted">Equipamentos eletroeletrônicos descartados, como celulares, computadores, TVs, pilhas e eletrodomésticos que não funcionam mais ou estão obsoletos.</p>
+                <a href="#descarte" class="btn btn-outline btn-sm mt-4">Ver categorias aceitas</a>
+              </div>
+            </article>
+            
+            <article class="card animate-on-scroll animation-delay-1">
+              <div class="card-body">
+                <div class="card-icon bg-error-bg text-error" style="width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-4);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                </div>
+                <h3>Impactos do Descarte Incorreto</h3>
+                <p class="text-muted">Contaminação do solo e água por metais pesados (chumbo, mercúrio, cádmio), emissão de gases tóxicos e riscos à saúde humana e animal.</p>
+              </div>
+            </article>
+            
+            <article class="card animate-on-scroll animation-delay-2">
+              <div class="card-body">
+                <div class="card-icon bg-accent-bg text-accent" style="width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-4);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                </div>
+                <h3>Benefícios da Reciclagem</h3>
+                <p class="text-muted">Recuperação de metais valiosos (ouro, prata, cobre), economia de energia, redução da extração mineral e geração de empregos verdes.</p>
+              </div>
+            </article>
+            
+            <article class="card animate-on-scroll animation-delay-3">
+              <div class="card-body">
+                <div class="card-icon bg-secondary-bg text-secondary" style="width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-4);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <h3>Preparo para Descarte</h3>
+                <p class="text-muted">Remova dados pessoais, separe pilhas/baterias, agrupe cabos e acessórios, embale itens frágeis e verifique o que o ponto aceita.</p>
+              </div>
+            </article>
+            
+            <article class="card animate-on-scroll animation-delay-4">
+              <div class="card-body">
+                <div class="card-icon bg-warning-bg text-warning" style="width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-4);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </div>
+                <h3>Itens NÃO Aceitos</h3>
+                <p class="text-muted">Lâmpadas fluorescentes, medicamentos, pilhas de chumbo-ácido (automotivas), equipamentos médicos, resíduos industriais e tóxicos.</p>
+              </div>
+            </article>
+            
+            <article class="card animate-on-scroll">
+              <div class="card-body">
+                <div class="card-icon bg-primary-bg text-primary" style="width:48px;height:48px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:var(--spacing-4);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                </div>
+                <h3>Economia Circular</h3>
+                <p class="text-muted">Estender a vida útil dos produtos, reparar em vez de trocar, doar equipamentos funcionais e garantir reciclagem adequada no fim da vida.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      
+      <!-- How to Dispose Section -->
+      <section id="descarte" class="section bg-gray-50" aria-labelledby="descarte-title">
+        <div class="container">
+          <header class="section-header section-header-center">
+            <h2 id="descarte-title" class="section-title">Como Descartar Corretamente</h2>
+            <div class="divider divider-center"></div>
+            <p class="section-subtitle">Categorias aceitas nos pontos de coleta de São Borja</p>
+          </header>
+          
+          <div class="grid grid-3" id="categorias-descarte">
+            <!-- Categories will be rendered by JS -->
+          </div>
+          
+          <div class="text-center mt-8">
+            <a href="#mapa" class="btn btn-primary btn-lg">Encontrar Ponto Próximo</a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Map Section -->
+      <section id="mapa" class="section" aria-labelledby="mapa-title">
+        <div class="container">
+          <header class="section-header">
+            <h2 id="mapa-title" class="section-title">Pontos de Coleta em São Borja</h2>
+            <div class="divider divider-left"></div>
+            <p class="section-subtitle">Encontre o local mais próximo para descartar seus eletrônicos</p>
+          </header>
+          
+          <div class="map-layout">
+            <aside class="map-filters card animate-on-scroll" style="position:sticky;top:90px;height:fit-content;">
+              <div class="card-header">
+                <h3 class="card-title" style="margin:0;font-size:var(--fs-lg);">Filtros</h3>
+              </div>
+              <div class="card-body">
+                <div class="filter-group" style="margin-bottom:var(--spacing-6);">
+                  <label class="filter-label" style="display:block;font-weight:500;margin-bottom:var(--spacing-2);font-size:var(--fs-sm);">Buscar por nome ou endereço</label>
+                  <input type="text" id="map-search" class="form-input" placeholder="Ex: Centro, Shopping, Rua..." style="width:100%;padding:var(--spacing-3);border:1px solid var(--color-gray-300);border-radius:var(--radius-md);font-size:var(--fs-base);" />
+                </div>
+                
+                <div class="filter-group" style="margin-bottom:var(--spacing-6);">
+                  <label class="filter-label" style="display:block;font-weight:500;margin-bottom:var(--spacing-2);font-size:var(--fs-sm);">Categoria de resíduo</label>
+                  <select id="map-category" class="form-input" style="width:100%;padding:var(--spacing-3);border:1px solid var(--color-gray-300);border-radius:var(--radius-md);font-size:var(--fs-base);">
+                    <option value="">Todas as categorias</option>
+                  </select>
+                </div>
+                
+                <div class="filter-group" style="margin-bottom:var(--spacing-6);">
+                  <label class="filter-label" style="display:block;font-weight:500;margin-bottom:var(--spacing-2);font-size:var(--fs-sm);">Horário de funcionamento</label>
+                  <select id="map-hours" class="form-input" style="width:100%;padding:var(--spacing-3);border:1px solid var(--color-gray-300);border-radius:var(--radius-md);font-size:var(--fs-base);">
+                    <option value="">Qualquer horário</option>
+                    <option value="open">Aberto agora</option>
+                    <option value="commercial">Horário comercial</option>
+                    <option value="extended">Horário estendido</option>
+                  </select>
+                </div>
+                
+                <button id="map-clear-filters" class="btn btn-outline" style="width:100%;">Limpar filtros</button>
+              </div>
+              
+              <div class="card-footer" style="border-top:1px solid var(--color-gray-200);padding-top:var(--spacing-4);margin-top:var(--spacing-4);">
+                <button id="btn-minha-localizacao" class="btn btn-primary" style="width:100%;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2"></path></svg>
+                  Minha Localização
+                </button>
+              </div>
+            </aside>
+            
+            <div class="map-main" style="flex:1;min-width:0;">
+              <div class="card" style="overflow:hidden;">
+                <div id="map" style="height:500px;width:100%;"></div>
+                <div id="map-info" class="card-body" style="padding:var(--spacing-4);display:none;">
+                  <div class="flex justify-between items-center">
+                    <span id="map-selected-name" style="font-weight:600;font-size:var(--fs-lg);"></span>
+                    <button id="map-close-info" class="btn btn-outline btn-sm" aria-label="Fechar informações">×</button>
+                  </div>
+                  <p id="map-selected-address" class="text-muted mt-4" style="margin:var(--spacing-2) 0;"></p>
+                  <div id="map-selected-categories" class="flex gap-2 flex-wrap mt-4" style="gap:var(--spacing-2);"></div>
+                  <div id="map-selected-hours" class="text-muted mt-4" style="margin:var(--spacing-2) 0;"></div>
+                  <div id="map-selected-contact" class="text-muted mt-4" style="margin:var(--spacing-2) 0;"></div>
+                  <div class="flex gap-3 mt-4" style="gap:var(--spacing-3);">
+                    <button id="map-trace-route" class="btn btn-primary" style="display:none;">Traçar Rota</button>
+                    <button id="map-open-external" class="btn btn-outline" style="display:none;">Abrir no Maps</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <aside class="map-results card animate-on-scroll" style="position:sticky;top:90px;height:fit-content;max-height:calc(100vh - 120px);overflow-y:auto;">
+              <div class="card-header">
+                <h3 class="card-title" style="margin:0;font-size:var(--fs-lg);">
+                  Pontos Encontrados <span id="map-count" class="badge badge-primary" style="font-size:var(--fs-xs);margin-left:var(--spacing-2);">0</span>
+                </h3>
+              </div>
+              <div class="card-body" style="padding:0;">
+                <ul id="map-results-list" style="list-style:none;padding:0;margin:0;">
+                  <!-- Results rendered by JS -->
+                </ul>
+                <div id="map-empty-state" style="padding:var(--spacing-8);text-align:center;display:none;">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="margin:0 auto var(--spacing-4);color:var(--color-gray-400);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                  <p class="text-muted">Nenhum ponto encontrado com os filtros atuais</p>
+                  <button id="map-reset-filters" class="btn btn-outline mt-4" style="display:none;">Limpar filtros</button>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Statistics Section -->
+      <section id="estatisticas" class="section bg-gray-50" aria-labelledby="estatisticas-title">
+        <div class="container">
+          <header class="section-header section-header-center">
+            <h2 id="estatisticas-title" class="section-title">Estatísticas da Pesquisa</h2>
+            <div class="divider divider-center"></div>
+            <p class="section-subtitle">Resultados do questionário sobre conhecimento e hábitos de descarte</p>
+          </header>
+          
+          <div class="grid grid-4" style="margin-bottom:var(--spacing-8);" id="stats-summary">
+            <!-- Summary cards rendered by JS -->
+          </div>
+          
+          <div class="grid grid-2" id="charts-container">
+            <div class="card animate-on-scroll">
+              <div class="card-header">
+                <h3 class="card-title" style="margin:0;font-size:var(--fs-lg);">Conhecem pontos de coleta</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-wrapper" style="height:300px;position:relative;">
+                  <canvas id="chart-pontos" aria-label="Gráfico de pizza: conhecimento sobre pontos de coleta"></canvas>
+                </div>
+                <p id="chart-pontos-desc" class="text-muted text-center mt-4" style="font-size:var(--fs-sm);margin:var(--spacing-4) 0 0;"></p>
+              </div>
+            </div>
+            
+            <div class="card animate-on-scroll animation-delay-1">
+              <div class="card-header">
+                <h3 class="card-title" style="margin:0;font-size:var(--fs-lg);">Conhecimento sobre lixo eletrônico</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-wrapper" style="height:300px;position:relative;">
+                  <canvas id="chart-conhecimento" aria-label="Gráfico de pizza: nível de conhecimento sobre lixo eletrônico"></canvas>
+                </div>
+                <p id="chart-conhecimento-desc" class="text-muted text-center mt-4" style="font-size:var(--fs-sm);margin:var(--spacing-4) 0 0;"></p>
+              </div>
+            </div>
+            
+            <div class="card animate-on-scroll animation-delay-2">
+              <div class="card-header">
+                <h3 class="card-title" style="margin:0;font-size:var(--fs-lg);">Consequências do descarte incorreto</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-wrapper" style="height:300px;position:relative;">
+                  <canvas id="chart-consequencias" aria-label="Gráfico de pizza: conhecimento sobre consequências"></canvas>
+                </div>
+                <p id="chart-consequencias-desc" class="text-muted text-center mt-4" style="font-size:var(--fs-sm);margin:var(--spacing-4) 0 0;"></p>
+              </div>
+            </div>
+            
+            <div class="card animate-on-scroll animation-delay-3">
+              <div class="card-header">
+                <h3 class="card-title" style="margin:0;font-size:var(--fs-lg);">Guardam lixo eletrônico em casa</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-wrapper" style="height:300px;position:relative;">
+                  <canvas id="chart-guardam" aria-label="Gráfico de pizza: hábito de guardar lixo eletrônico"></canvas>
+                </div>
+                <p id="chart-guardam-desc" class="text-muted text-center mt-4" style="font-size:var(--fs-sm);margin:var(--spacing-4) 0 0;"></p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card bg-primary-bg border-primary-border mt-8 animate-on-scroll animation-delay-4">
+            <div class="card-body">
+              <div class="flex justify-between items-start flex-wrap gap-4" style="gap:var(--spacing-4);">
+                <div>
+                  <h3 style="color:var(--color-primary);margin-bottom:var(--spacing-2);">Sobre estes dados</h3>
+                  <p class="text-muted" style="margin:0;max-width:600px;">
+                    Os gráficos acima representam as respostas ao questionário aplicado pela equipe do EcoPoint 
+                    como parte do PPI 2026. Eles refletem o <strong>conhecimento e hábitos declarados</strong> 
+                    pelos participantes, não quantidades físicas de resíduos coletados.
+                  </p>
+                </div>
+                <div class="flex gap-2" style="gap:var(--spacing-2);">
+                  <span id="stats-total-responses" class="badge badge-primary" style="font-size:var(--fs-sm);">— respostas</span>
+                  <span id="stats-last-update" class="badge badge-secondary" style="font-size:var(--fs-sm);">Atualizado: —</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- About Section -->
+      <section id="sobre" class="section" aria-labelledby="sobre-title">
+        <div class="container">
+          <header class="section-header section-header-center">
+            <h2 id="sobre-title" class="section-title">Sobre o EcoPoint</h2>
+            <div class="divider divider-center"></div>
+            <p class="section-subtitle">Conheça o projeto, seus objetivos e sua relação com a comunidade</p>
+          </header>
+          
+          <div class="grid grid-2" style="align-items:start;gap:var(--spacing-10);">
+            <div class="animate-on-scroll">
+              <h3 style="margin-bottom:var(--spacing-4);">O que é o EcoPoint</h3>
+              <p class="text-muted" style="margin-bottom:var(--spacing-6);">
+                O EcoPoint é uma plataforma digital desenvolvida para incentivar o descarte correto de resíduos 
+                eletrônicos em São Borja, Rio Grande do Sul. O projeto nasceu da necessidade de conectar a população 
+                a informações confiáveis sobre onde e como descartar equipamentos eletrônicos inutilizados.
+              </p>
+              
+              <h3 style="margin-bottom:var(--spacing-4);">O problema que enfrentamos</h3>
+              <p class="text-muted" style="margin-bottom:var(--spacing-6);">
+                O Brasil produz milhões de toneladas de lixo eletrônico por ano, e grande parte é descartada 
+                incorretamente — no lixo comum, em terrenos baldios ou guardada em casa por falta de informação. 
+                Isso contamina solo, água e ar, além de desperdiçar materiais valiosos que poderiam ser reciclados.
+              </p>
+              
+              <h3 style="margin-bottom:var(--spacing-4);">Nossos objetivos</h3>
+              <ul style="list-style:none;padding:0;">
+                <li class="flex gap-3 mb-4" style="gap:var(--spacing-3);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" aria-hidden="true" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Mapear e divulgar pontos de coleta em São Borja</span>
+                </li>
+                <li class="flex gap-3 mb-4" style="gap:var(--spacing-3);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" aria-hidden="true" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Educar sobre preparo e categorias de resíduos aceitos</span>
+                </li>
+                <li class="flex gap-3 mb-4" style="gap:var(--spacing-3);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" aria-hidden="true" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Coletar dados para subsidiar políticas públicas</span>
+                </li>
+                <li class="flex gap-3 mb-4" style="gap:var(--spacing-3);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" aria-hidden="true" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Promover consumo consciente e economia circular</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="animate-on-scroll animation-delay-1">
+              <div class="card bg-primary-bg border-primary-border" style="height:100%;">
+                <div class="card-body">
+                  <h3 style="color:var(--color-primary);margin-bottom:var(--spacing-4);">PPI 2026 - IFFar Campus São Borja</h3>
+                  <p class="text-muted" style="margin-bottom:var(--spacing-6);">
+                    Este projeto foi desenvolvido no âmbito do <strong>Projeto de Pesquisa e Inovação (PPI 2026)</strong> 
+                    do <strong>Instituto Federal Farroupilha - Campus São Borja</strong>, integrando tecnologia, 
+                    sustentabilidade e extensão universitária.
+                  </p>
+                  
+                  <h4 style="margin-bottom:var(--spacing-3);color:var(--color-primary);">Como os dados são obtidos</h4>
+                  <ul style="list-style:disc;padding-left:var(--spacing-6);color:var(--color-gray-700);">
+                    <li style="margin-bottom:var(--spacing-2);">Questionário online aplicado à população de São Borja</li>
+                    <li style="margin-bottom:var(--spacing-2);">Cadastro e validação de pontos de coleta parceiros</li>
+                    <li style="margin-bottom:var(--spacing-2);">Integração com sistemas de monitoramento (Arduino/IoT) — <em>em desenvolvimento</em></li>
+                  </ul>
+                  
+                  <h4 style="margin-top:var(--spacing-6);margin-bottom:var(--spacing-3);color:var(--color-primary);">Limitações das informações</h4>
+                  <ul style="list-style:disc;padding-left:var(--spacing-6);color:var(--color-gray-700);">
+                    <li style="margin-bottom:var(--spacing-2);">Pontos de coleta dependem de cadastro e atualização pelos responsáveis</li>
+                    <li style="margin-bottom:var(--spacing-2);">Horários e materiais aceitos podem mudar sem aviso prévio</li>
+                    <li style="margin-bottom:var(--spacing-2);">Estatísticas refletem amostra da pesquisa, não a população total</li>
+                    <li style="margin-bottom:var(--spacing-2);">Sensores de monitoramento ainda em fase de implementação</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- ODS Section -->
+          <div class="mt-12 animate-on-scroll animation-delay-2">
+            <header class="section-header section-header-center" style="max-width:var(--container-narrow);margin:0 auto var(--spacing-8);">
+              <h3 class="section-title" style="font-size:var(--fs-2xl);">Objetivos de Desenvolvimento Sustentável</h3>
+              <div class="divider divider-center"></div>
+              <p class="section-subtitle">O EcoPoint contribui diretamente para 4 ODS da ONU</p>
+            </header>
+            
+            <div class="grid grid-4" id="ods-grid">
+              <!-- ODS cards rendered by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- News Section -->
+      <section id="noticias" class="section bg-gray-50" aria-labelledby="noticias-title">
+        <div class="container">
+          <header class="section-header section-header-center">
+            <h2 id="noticias-title" class="section-title">Notícias e Atualizações</h2>
+            <div class="divider divider-center"></div>
+            <p class="section-subtitle">Acompanhe novidades sobre resíduos eletrônicos e sustentabilidade</p>
+          </header>
+          
+          <div class="grid grid-3" id="noticias-grid">
+            <!-- News cards rendered by JS -->
+          </div>
+          
+          <div class="text-center mt-8">
+            <button id="noticias-load-more" class="btn btn-outline" style="display:none;">Carregar mais</button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Team Section -->
+      <section id="equipe" class="section" aria-labelledby="equipe-title">
+        <div class="container">
+          <header class="section-header section-header-center">
+            <h2 id="equipe-title" class="section-title">Equipe do Projeto</h2>
+            <div class="divider divider-center"></div>
+            <p class="section-subtitle">Estudantes e orientadores do IFFar Campus São Borja</p>
+          </header>
+          
+          <div class="grid grid-3" id="equipe-grid">
+            <!-- Team members rendered by JS -->
+          </div>
+        </div>
+      </section>
     </main>
-
-    <footer class="rodape">
-      <a href="#" class="footer_texto">Links</a> |
-      <a href="#" class="footer_texto">Contato</a> |
-      <a href="#" class="footer_texto">Redes Sociais</a> | © 2026 EcoPoint
+    
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#inicio" class="footer-logo" aria-label="EcoPoint - Página inicial">
+              <img src="./assets/logo_generica_sem-fundo.png" alt="" width="40" height="40" />
+              <span>EcoPoint</span>
+            </a>
+            <p class="text-muted" style="margin-top:var(--spacing-4);max-width:300px;">
+              Plataforma para descarte consciente de resíduos eletrônicos em São Borja.
+              Projeto PPI 2026 - IFFar Campus São Borja.
+            </p>
+          </div>
+          
+          <nav class="footer-nav" aria-label="Links úteis">
+            <h4 style="margin-bottom:var(--spacing-4);">Navegação</h4>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:var(--spacing-2);">
+              <li><a href="#inicio" class="footer-link">Início</a></li>
+              <li><a href="#descarte" class="footer-link">Como Descartar</a></li>
+              <li><a href="#mapa" class="footer-link">Pontos de Coleta</a></li>
+              <li><a href="#estatisticas" class="footer-link">Estatísticas</a></li>
+              <li><a href="#sobre" class="footer-link">Sobre o Projeto</a></li>
+            </ul>
+          </nav>
+          
+          <div class="footer-contact">
+            <h4 style="margin-bottom:var(--spacing-4);">Contato</h4>
+            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:var(--spacing-2);">
+              <li><a href="mailto:ecopoint@iffar.edu.br" class="footer-link">ecopoint@iffar.edu.br</a></li>
+              <li><a href="https://www.iffar.edu.br/saoborja" target="_blank" rel="noopener" class="footer-link">IFFar Campus São Borja</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-social">
+            <h4 style="margin-bottom:var(--spacing-4);">Redes Sociais</h4>
+            <div class="flex gap-3" style="gap:var(--spacing-3);" id="social-links">
+              <!-- Social links rendered by JS -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom" style="border-top:1px solid rgba(255,255,255,0.1);margin-top:var(--spacing-8);padding-top:var(--spacing-6);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--spacing-4);">
+          <p class="text-muted" style="font-size:var(--fs-sm);margin:0;">
+            © 2026 EcoPoint. Todos os direitos reservados.
+          </p>
+          <div class="flex gap-4" style="gap:var(--spacing-4);">
+            <a href="#privacidade" class="footer-link" style="font-size:var(--fs-sm);">Política de Privacidade</a>
+            <a href="#termos" class="footer-link" style="font-size:var(--fs-sm);">Termos de Uso</a>
+            <a href="#acessibilidade" class="footer-link" style="font-size:var(--fs-sm);">Acessibilidade</a>
+          </div>
+        </div>
+      </div>
     </footer>
-   
-
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="./js/main.js"></script>
     <script src="./js/mapa.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="js/graficos.js"></script>
-  <script src="js/scroll.js"></script>
-  <script src="js/animacoes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./js/noticias.js"></script>
+    <script src="./js/graficos.js"></script>
+    <script src="./js/categorias.js"></script>
+    <script src="./js/noticias.js"></script>
+    <script src="./js/equipe.js"></script>
+    <script src="./js/ods.js"></script>
+    <script src="./js/estatisticas.js"></script>
   </body>
 </html>
