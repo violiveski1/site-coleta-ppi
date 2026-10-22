@@ -1,13 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Paleta 60-30-10 Original */
-  --cor-fundo-geral: #e8f5e9;        /* 60% Verde claro - fundo */
-  --cor-nav-titulos: #1a237e;        /* 30% Azul escuro - nav, títulos */
-  --cor-destaque: #ff9800;           /* 10% Laranja - subtítulos, destaques */
 
   /* Aliases semânticos para o novo design system */
-  --color-primary: #1a237e;          /* = --cor-nav-titulos */
+  --color-primary: #1a7e31;          /* = --cor-nav-titulos */
   --color-primary-light: #283593;
   --color-primary-lighter: #3949ab;
   --color-primary-bg: #e8f5e9;       /* = --cor-fundo-geral */
@@ -15,8 +11,8 @@
 
   --color-secondary: #1a237e;
   --color-secondary-light: #283593;
-  --color-secondary-bg: #e8eaf6;
-  --color-secondary-border: #c5cae9;
+  --color-secondary-bg: #e8f6ed;
+  --color-secondary-border: #1a7e31;
 
   --color-accent: #ff9800;           /* = --cor-destaque */
   --color-accent-light: #ffa726;
@@ -30,7 +26,7 @@
   --color-error-bg: #fdecea;
   --color-error-border: #ef9a9a;
 
-  --color-white: #ffffff;
+  --color-white: #f3fef6;
   --color-gray-50: #fafafa;
   --color-gray-100: #f5f5f5;
   --color-gray-200: #eeeeee;
@@ -345,7 +341,7 @@ li {
 .badge-primary {
   background: var(--color-primary-bg);
   color: var(--color-primary);
-  border: 1px solid var(--color-primary-border);
+  border: 1px solid var(--color-primary);
 }
 
 .badge-secondary {
@@ -395,7 +391,7 @@ li {
 .text-primary { color: var(--color-primary); }
 .text-secondary { color: var(--color-secondary); }
 .text-accent { color: var(--color-accent); }
-.text-muted { color: var(--color-gray-600); }
+.text-muted { color: var(--color-gray-800); }
 .text-white { color: var(--color-white); }
 
 .bg-primary { background-color: var(--color-primary); }
@@ -476,7 +472,7 @@ li {
 
 .section-subtitle {
   font-size: var(--fs-lg);
-  color: var(--color-gray-600);
+  color: var(--color-gray-800);
   font-weight: 400;
 }
 
@@ -578,7 +574,7 @@ li {
   padding: var(--spacing-2) var(--spacing-4);
   font-size: var(--fs-sm);
   font-weight: 500;
-  color: var(--color-gray-700);
+  color: var(--color-gray-800);
   border-radius: var(--radius-md);
   transition: all var(--transition-fast);
 }
@@ -642,7 +638,7 @@ li {
 
 .hero-subtitle {
   font-size: var(--fs-lg);
-  color: var(--color-gray-600);
+  color: var(--color-gray-800);
   line-height: 1.7;
   margin-bottom: var(--spacing-8);
 }
