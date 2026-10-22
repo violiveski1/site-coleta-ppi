@@ -2,64 +2,49 @@
 
 const EQUIPE = [
   {
-    nome: 'Alvaro Nolibos',
-    papel: 'Desenvolvedor',
+    nome: 'Álvaro Nolibos',
+
     foto: null,
     linkedin: null,
     github: null
   },
   {
     nome: 'Arthur Rigon',
-    papel: 'Desenvolvedor',
+
     foto: null,
     linkedin: null,
     github: null
   },
   {
     nome: 'Bernardo Pimentel',
-    papel: 'Desenvolvedor',
+
     foto: null,
     linkedin: null,
     github: null
   },
   {
     nome: 'Bruno Ortiz',
-    papel: 'Desenvolvedor',
-    foto: null,
-    linkedin: null,
-    github: null
-  },
-  {
-    nome: 'Claiton Correa',
-    papel: 'Desenvolvedor',
+  
     foto: null,
     linkedin: null,
     github: null
   },
   {
     nome: 'Henrique da Vida',
-    papel: 'Desenvolvedor',
-    foto: null,
-    linkedin: null,
-    github: null
-  },
-  {
-    nome: 'Ícaro Iglesias',
-    papel: 'Desenvolvedor',
+
     foto: null,
     linkedin: null,
     github: null
   },
   {
     nome: 'Mateus Olea',
-    papel: 'Desenvolvedor',
+
     foto: null,
     linkedin: null,
     github: null
   },
   {
     nome: 'Vicente Oliveski',
-    papel: 'Desenvolvedor',
     foto: null,
     linkedin: null,
     github: null
@@ -68,23 +53,33 @@ const EQUIPE = [
 
 const ORIENTADORES = [
   {
-    nome: 'Prof. Dr. Nome do Orientador 1',
+    nome: 'Claiton Correa',
+    papel: 'Orientador',
     departamento: 'Departamento de Computação',
-    email: 'orientador1@iffar.edu.br'
+    email: 'claiton.correa@iffarroupilha.edu.br'
   },
   {
-    nome: 'Prof. Dr. Nome do Orientador 2',
-    departamento: 'Departamento de Meio Ambiente',
-    email: 'orientador2@iffar.edu.br'
+    nome: 'Ícaro Iglesias',
+    papel: 'Co-Orientador',
+    departamento: 'Departamento de Computação',
+    email: 'icaro.iglesias@iffarroupilha.edu.br'
   }
 ];
 
+let currentSlide = 0;
+let slideWidth = 0;
+let maxSlides = 0;
+
 function renderEquipe() {
-  const container = document.getElementById('equipe-grid');
-  if (!container) return;
+  const track = document.getElementById('equipe-carousel-track');
+  const dotsContainer = document.getElementById('equipe-dots');
+  const orientadoresContainer = document.getElementById('orientadores-section');
   
-  container.innerHTML = EQUIPE.map((membro, index) => `
-    <article class="card equipe-card animate-on-scroll" style="animation-delay:${index * 100}ms;text-align:center;">
+  if (!track) return;
+
+  // Render team members
+  track.innerHTML = EQUIPE.map((membro, index) => `
+    <article class="equipe-slide card equipe-card" style="text-align:center;flex:0 0 ${100 / getSlidesPerView()}%;min-width:280px;padding:var(--spacing-6);">
       <div class="card-body" style="padding:var(--spacing-6);">
         <div class="equipe-avatar" style="width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--color-primary),var(--color-primary-light));display:flex;align-items:center;justify-content:center;margin:0 auto var(--spacing-4);font-size:var(--fs-2xl);font-weight:600;color:var(--color-white);text-transform:uppercase;">
           ${getInitials(membro.nome)}
@@ -98,34 +93,160 @@ function renderEquipe() {
       </div>
     </article>
   `).join('');
+
+  // Render dots
+  maxSlides = EQUIPE.length - getSlidesPerView() + 1;
+  if (maxSlides < 1) maxSlides = 1;
   
-  // Add orientadores section
-  const orientadoresSection = document.createElement('div');
-  orientadoresSection.className = 'orientadores-section';
-  orientadoresSection.style.marginTop = 'var(--spacing-12)';
-  orientadoresSection.innerHTML = `
-    <h3 style="text-align:center;margin-bottom:var(--spacing-6);color:var(--color-primary);">Orientadores</h3>
-    <div class="grid grid-2" style="gap:var(--spacing-6);">
-      ${ORIENTADORES.map((orientador, index) => `
-        <article class="card orientador-card animate-on-scroll" style="animation-delay:${(EQUIPE.length + index) * 100}ms;">
-          <div class="card-body" style="padding:var(--spacing-6);">
-            <div class="flex gap-4" style="gap:var(--spacing-4);">
-              <div class="equipe-avatar" style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--color-secondary),var(--color-secondary-light));display:flex;align-items:center;justify-content:center;font-size:var(--fs-xl);font-weight:600;color:var(--color-white);text-transform:uppercase;flex-shrink:0;">
-                ${getInitials(orientador.nome)}
-              </div>
-              <div>
-                <h4 style="margin:0 0 var(--spacing-1);font-size:var(--fs-base);color:var(--color-gray-900);">${escapeHtml(orientador.nome)}</h4>
-                <p class="text-muted" style="margin:0 0 var(--spacing-1);font-size:var(--fs-sm);">${escapeHtml(orientador.departamento)}</p>
-                ${orientador.email ? `<a href="mailto:${orientador.email}" class="text-muted" style="font-size:var(--fs-sm);">${escapeHtml(orientador.email)}</a>` : ''}
+  dotsContainer.innerHTML = Array.from({ length: maxSlides }, (_, i) => `
+    <button class="equipe-dot ${i === 0 ? 'active' : ''}" data-slide="${i}" aria-label="Ir para slide ${i + 1}"></button>
+  `).join('');
+
+  // Render orientadores
+  if (orientadoresContainer) {
+    orientadoresContainer.innerHTML = `
+      <h3 style="text-align:center;margin-bottom:var(--spacing-6);margin-top:var(--spacing-12);color:var(--color-primary);">Orientadores</h3>
+      <div class="grid grid-2" style="gap:var(--spacing-6);max-width:720px;margin:0 auto;">
+        ${ORIENTADORES.map((orientador, index) => `
+          <article class="card orientador-card animate-on-scroll" style="animation-delay:${index * 100}ms;">
+            <div class="card-body" style="padding:var(--spacing-6);">
+              <div class="flex gap-4" style="gap:var(--spacing-4);">
+                <div class="equipe-avatar" style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--color-secondary),var(--color-secondary-light));display:flex;align-items:center;justify-content:center;font-size:var(--fs-xl);font-weight:600;color:var(--color-white);text-transform:uppercase;flex-shrink:0;">
+                  ${getInitials(orientador.nome)}
+                </div>
+                <div>
+                  <h4 style="margin:0 0 var(--spacing-1);font-size:var(--fs-base);color:var(--color-gray-900);">${escapeHtml(orientador.nome)}</h4>
+                  <p class="text-muted" style="margin:0 0 var(--spacing-1);font-size:var(--fs-sm);">${escapeHtml(orientador.papel)}</p>
+                  <p class="text-muted" style="margin:0 0 var(--spacing-1);font-size:var(--fs-sm);">${escapeHtml(orientador.departamento)}</p>
+                  ${orientador.email ? `<a href="mailto:${orientador.email}" class="text-muted" style="font-size:var(--fs-sm);">${escapeHtml(orientador.email)}</a>` : ''}
+                </div>
               </div>
             </div>
-          </div>
-        </article>
-      `).join('')}
-    </div>
-  `;
+          </article>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  initCarousel();
+}
+
+function getSlidesPerView() {
+  const width = window.innerWidth;
+  if (width >= 1024) return 3;
+  if (width >= 768) return 2;
+  return 1;
+}
+
+function initCarousel() {
+  const track = document.getElementById('equipe-carousel-track');
+  const prevBtn = document.getElementById('equipe-prev');
+  const nextBtn = document.getElementById('equipe-next');
+  const dotsContainer = document.getElementById('equipe-dots');
   
-  container.parentNode.appendChild(orientadoresSection);
+  if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+  updateSlideWidth();
+  
+  prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+  nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+  
+  dotsContainer.querySelectorAll('.equipe-dot').forEach((dot, index) => {
+    dot.addEventListener('click', () => goToSlide(index));
+  });
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  track.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  
+  track.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goToSlide(currentSlide + 1);
+      else goToSlide(currentSlide - 1);
+    }
+  }, { passive: true });
+
+  // Keyboard navigation
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
+    if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
+  });
+
+  // Recalculate on resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const newSlidesPerView = getSlidesPerView();
+      const newMaxSlides = EQUIPE.length - newSlidesPerView + 1;
+      if (newMaxSlides !== maxSlides) {
+        maxSlides = Math.max(1, newMaxSlides);
+        currentSlide = Math.min(currentSlide, maxSlides - 1);
+        updateDots();
+        updateSlideWidth();
+        goToSlide(currentSlide);
+      } else {
+        updateSlideWidth();
+        goToSlide(currentSlide);
+      }
+    }, 100);
+  });
+}
+
+function updateSlideWidth() {
+  const track = document.getElementById('equipe-carousel-track');
+  const viewport = document.querySelector('.equipe-carousel-viewport');
+  if (!track || !viewport) return;
+  
+  const slides = track.querySelectorAll('.equipe-slide');
+  if (slides.length === 0) return;
+  
+  const viewportWidth = viewport.offsetWidth;
+  const slidesPerView = getSlidesPerView();
+  const gap = 24; // CSS gap value
+  
+  slideWidth = (viewportWidth - gap * (slidesPerView - 1)) / slidesPerView;
+  
+  slides.forEach(slide => {
+    slide.style.flex = `0 0 ${slideWidth}px`;
+  });
+  
+  goToSlide(currentSlide);
+}
+
+function goToSlide(index) {
+  const track = document.getElementById('equipe-carousel-track');
+  const prevBtn = document.getElementById('equipe-prev');
+  const nextBtn = document.getElementById('equipe-next');
+  
+  if (!track) return;
+  
+  maxSlides = Math.max(1, EQUIPE.length - getSlidesPerView() + 1);
+  currentSlide = Math.max(0, Math.min(index, maxSlides - 1));
+  
+  const translateX = -currentSlide * (slideWidth + 24); // slideWidth + gap
+  track.style.transform = `translateX(${translateX}px)`;
+  
+  updateDots();
+  
+  prevBtn.disabled = currentSlide === 0;
+  nextBtn.disabled = currentSlide >= maxSlides - 1;
+  
+  prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+  nextBtn.style.opacity = currentSlide >= maxSlides - 1 ? '0.5' : '1';
+}
+
+function updateDots() {
+  const dotsContainer = document.getElementById('equipe-dots');
+  if (!dotsContainer) return;
+  
+  dotsContainer.querySelectorAll('.equipe-dot').forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentSlide);
+  });
 }
 
 function getInitials(nome) {

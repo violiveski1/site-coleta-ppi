@@ -1,0 +1,34 @@
+# Documentação Técnica - Seção Mapa (Pontos de Coleta)
+
+## Alterações Realizadas
+
+### 1. Remoção de Componentes
+- **Sidebar de Filtros** (busca, categoria, horário, limpar filtros)
+- **Sidebar de Resultados** ("Pontos Encontrados" com lista)
+- **Botão "Minha Localização"** da sidebar (movido para o mapa)
+
+### 2. Simplificação do Layout
+- Mapa agora ocupa **largura total** (`.map-container`)
+- Container único com `overflow:hidden` no card
+
+### 3. Funcionalidade de Rota (Mantida)
+- **Botão flutuante** "Minha Localização" (canto inferior direito do mapa)
+- **Clique no marcador** → "Traçar rota até aqui"
+- Solicita geolocalização → calcula rota via **OSRM**
+- Exibe **distância (km)** e **tempo estimado** no painel inferior (`#map-info`)
+- **Botão fechar (×)** limpa rota e esconde painel
+
+### 4. Pontos de Coleta (3 fixos)
+1. Magazine Luiza (Centro)
+2. IFFar Campus São Borja (Betim)
+3. Claro (Centro)
+
+### 5. Arquivos Modificados
+- `index.html` - Estrutura simplificada da seção `#mapa`
+- `js/mapa.js` - Lógica simplificada (markers + rota + geolocation)
+- `css/styles.css` - Estilos do botão flutuante e container
+
+### 6. Dependências
+- Leaflet.js (mapa)
+- OSRM API (roteamento) - `router.project-osrm.org`
+- Geolocation API (navegador)

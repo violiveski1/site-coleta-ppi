@@ -1,0 +1,59 @@
+# Documentação Técnica - Alterações de Hoje
+
+## Resumo Geral
+Limpeza e simplificação da interface: remoção de componentes não utilizados, centralização do hero, correção de gráficos, carrossel da equipe, mapa simplificado e footer minimalista.
+
+---
+
+## 1. Hero Section (`index.html`, `css/styles.css`)
+- **Removido**: Mini-mapa da seção hero (`#hero-map`)
+- **Centralizado**: Todo conteúdo do hero (título, botões, badge)
+- **Removido**: Bloco de estatísticas com placeholders (— Pontos, — Categorias, — Participantes)
+- **CSS**: `.hero-grid` agora single-column com `justify-content: center`, `.hero-actions` e `.hero-stats` com `justify-content: center`
+
+## 2. Gráficos de Estatísticas (`js/graficos.js`)
+- **Corrigido**: Bug no contador `guardam` (era `|| 1`, virou `|| 0`)
+- **Adicionado**: Percentuais **dentro das fatias** do gráfico (plugin `segmentLabels`)
+- **Corrigido**: Legendas mostravam "undefined" - fallback para `chart.data.labels[i]`
+- **Cores alteradas**: Paleta alto contraste **Verde (#1b5e20) / Azul (#1565c0) / Laranja (#e65100)**
+- **Cards de resumo**: Percentuais agora calculam respostas "positivas" (Sim/Conheço/Bem) via `getPositivePercentage()`
+
+## 3. Seção Equipe (`index.html`, `js/equipe.js`, `css/styles.css`)
+- **Convertido**: Grid estático → **Carrossel responsivo**
+  - Desktop: 3 cards | Tablet: 2 | Mobile: 1
+  - Navegação: setas laterais + dots + teclado (← →) + swipe touch
+- **Orientadores atualizados**: Claiton Correa e Ícaro Iglesias
+- **Alinhamento**: Grid dos orientadores centralizado (`justify-content: center`)
+- **Tamanho cards**: min-width 320px para caber emails
+
+## 4. Mapa - Pontos de Coleta (`index.html`, `js/mapa.js`)
+- **Removido**: Sidebar de filtros (busca, categoria, horário, limpar)
+- **Removido**: Sidebar de resultados ("Pontos Encontrados")
+- **Mantido**: Roteamento via OSRM
+- **Adicionado**: Botão flutuante "Minha Localização" (canto inf. direito do mapa)
+- **Fluxo**: Clica marcador → "Traçar rota" → pede localização → mostra dist./tempo no painel inferior
+- **Pontos fixos**: Magazine Luiza, IFFar, Claro
+
+## 5. Footer (`index.html`)
+- **Removido**: Seção Contato, Redes Sociais
+- **Removido**: Links Política de Privacidade, Termos de Uso, Acessibilidade
+- **Mantido**: Brand/logo + Navegação (5 links) + Copyright centralizado
+
+---
+
+## Arquivos Modificados
+| Arquivo | Tipo de Alteração |
+|---------|-------------------|
+| `index.html` | Estrutura hero, mapa, equipe, footer |
+| `css/styles.css` | Hero centralizado, carrossel equipe, orientadores, botão mapa |
+| `js/graficos.js` | Cores, labels internos, legenda fixa, cards resumo |
+| `js/equipe.js` | Carrossel completo + orientadores atualizados |
+| `js/mapa.js` | Simplificado (markers + rota + geolocation) |
+
+---
+
+## Dependências Externas
+- Leaflet.js + OpenTopoMap (mapa)
+- Chart.js (gráficos)
+- OSRM API (roteamento)
+- Google Sheets CSV (dados pesquisa)

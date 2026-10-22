@@ -19,23 +19,23 @@ L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
 
 const ecopoints = [
     {
-        nome: "EcoPoint 1",
-        latitude: -28.6600,
-        longitude: -56.0040,
-        descricao: "Ponto de coleta de lixo eletrônico."
+        nome: "Magazine Luiza (Segundo Piso)",
+        latitude: -28.66000878564935,
+        longitude: -56.00515960674588,
+        descricao: "R. Cândido Falcão, 1141 - Centro, São Borja - RS, 97670-000"
     },
     {
-        nome: "EcoPoint 2",
-        latitude: -28.6700,
-        longitude: -56.0100,
-        descricao: "Ponto de coleta de eletrônicos."
+        nome: "Instituto Federal Farroupilha - Campus São Borja",
+        latitude: -28.66673966179836,
+        longitude: -55.994759202972574,
+        descricao: "R. Otaviano Castilho Mendes, 355 - Betim, São Borja - RS, 97670-000"
     },
     {
-        nome: "EcoPoint 3",
-        latitude: -28.6650,
-        longitude: -56.0150,
-        descricao: "Ponto de descarte responsável."
-    }
+        nome: "Claro",
+        latitude: -28.65773199010542,
+        longitude: -56.00612993180909,
+        descricao: "R. Cel. Lago, 2194 - Centro, São Borja - RS, 97670-000"
+    },
 ];
 
 
@@ -50,11 +50,11 @@ let rotaAtual = null;
 
 
 // ========================================
-// PAINEL DE MENSAGENS (substitui os alert)
+// PAINEL DE MENSAGENS
 // ========================================
 
 function mostrarInfo(html, tipo) {
-    const painel = document.getElementById("infoRota");
+    const painel = document.getElementById("map-info");
 
     // Se o painel não existir no HTML, avisa por alert para não ficar mudo
     if (!painel) {
@@ -62,8 +62,33 @@ function mostrarInfo(html, tipo) {
         return;
     }
 
-    painel.className = "info-rota" + (tipo ? " info-rota--" + tipo : "");
-    painel.innerHTML = html;
+    const selectedName = document.getElementById("map-selected-name");
+    if (selectedName) {
+        selectedName.innerHTML = html;
+    }
+    painel.style.display = "block";
+}
+
+function mostrarRotaInfo(html, tipo) {
+    const painel = document.getElementById("map-info");
+    const selectedName = document.getElementById("map-selected-name");
+    
+    if (!painel) {
+        alert(html.replace(/<[^>]+>/g, ""));
+        return;
+    }
+
+    if (selectedName) {
+        selectedName.innerHTML = html;
+    }
+    painel.style.display = "block";
+}
+
+function ocultarInfo() {
+    const painel = document.getElementById("map-info");
+    if (painel) {
+        painel.style.display = "none";
+    }
 }
 
 function escaparHTML(texto) {
@@ -251,7 +276,7 @@ function calcularRota() {
             const distancia = (rota.distance / 1000).toFixed(2).replace(".", ",");
             const minutos = Math.round(rota.duration / 60);
 
-            mostrarInfo(
+            mostrarRotaInfo(
                 `<strong>Rota até ${escaparHTML(ecopointSelecionado.nome)}</strong><br>` +
                 `Distância: ${distancia} km &nbsp;|&nbsp; ` +
                 `Tempo estimado (de carro): ${minutos} min`,
@@ -278,7 +303,7 @@ function limparRota() {
     }
 
     ecopointSelecionado = null;
-    mostrarInfo("Rota removida.");
+    ocultarInfo();
 }
 
 
@@ -295,6 +320,15 @@ function ligarBotao(id, funcao) {
     }
 }
 
-ligarBotao("btnLocalizacao", minhaLocalizacao);
-ligarBotao("btnRota", calcularRota);
-ligarBotao("btnLimparRota", limparRota);
+// Usar o botão "Minha Localização" do popup do mapa
+// O botão de traçar rota é acionado via onclick no popup
+// O botão de limpar rota seria o "Fechar informações" no painel
+
+// Conectar botões
+ligarBotao("btn-minha-localizacao", minhaLocalizacao);
+ligarBotao("map-close-info", limparRota);
+
+// Garantir que o mapa seja renderizado corretamente
+mapa.whenReady(() => {
+    mapa.invalidateSize();
+});
