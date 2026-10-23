@@ -2,7 +2,13 @@
 // CONFIGURAÇÃO DO MAPA
 // ========================================
 
-const mapa = L.map("map").setView([-28.6600, -56.0040], 13);
+const boundsSaoBorja = L.latLngBounds([-28.75, -56.15], [-28.55, -55.90]);
+
+const mapa = L.map("map", {
+    maxBounds: boundsSaoBorja,
+    maxBoundsViscosity: 1.0,
+    minZoom: 13,
+}).setView([-28.6600, -56.0040], 13);
 
 // OpenTopoMap - gratuito, sem API key, sem bloqueio
 L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {

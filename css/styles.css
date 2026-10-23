@@ -2,19 +2,19 @@
 
 :root {
 
-  /* Aliases semânticos para o novo design system */
-  --color-primary: #1a7e31;          /* = --cor-nav-titulos */
+  /* 60% verde claro (fundo), 30% azul escuro (nav/títulos), 10% laranja (subtítulos/destaques) */
+  --color-primary: #1a237e;          /* Azul escuro - nav, títulos, botões primários */
   --color-primary-light: #283593;
   --color-primary-lighter: #3949ab;
-  --color-primary-bg: #e8f5e9;       /* = --cor-fundo-geral */
-  --color-primary-border: #c8e6c9;
+  --color-primary-bg: #e8eaf6;       /* Azul bem claro para backgrounds de cards/sections */
+  --color-primary-border: #c5cae9;
 
-  --color-secondary: #1a237e;
-  --color-secondary-light: #283593;
-  --color-secondary-bg: #e8f6ed;
-  --color-secondary-border: #1a7e31;
+  --color-secondary: #1a7e31;        /* Verde - elementos secundários, badges de sucesso */
+  --color-secondary-light: #2e7d32;
+  --color-secondary-bg: #e8f5e9;     /* Verde claro - fundo principal do site (60%) */
+  --color-secondary-border: #c8e6c9;
 
-  --color-accent: #ff9800;           /* = --cor-destaque */
+  --color-accent: #ff9800;           /* Laranja - subtítulos, destaques, CTAs secundários (10%) */
   --color-accent-light: #ffa726;
   --color-accent-bg: #fff3e0;
   --color-accent-border: #ffe0b2;
@@ -26,7 +26,7 @@
   --color-error-bg: #fdecea;
   --color-error-border: #ef9a9a;
 
-  --color-white: #f3fef6;
+  --color-white: #ffffff;
   --color-gray-50: #fafafa;
   --color-gray-100: #f5f5f5;
   --color-gray-200: #eeeeee;
@@ -118,7 +118,7 @@ body {
   font-size: var(--fs-base);
   line-height: 1.6;
   color: var(--color-gray-900);
-  background-color: var(--color-gray-50);
+  background-color: var(--color-secondary-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -370,6 +370,10 @@ li {
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 
+.grid-3 > :last-child:nth-child(3n+1) {
+    grid-column: 2;
+}
+
 .flex {
   display: flex;
 }
@@ -468,12 +472,14 @@ li {
 
 .section-title {
   margin-bottom: var(--spacing-3);
+  color: var(--color-primary);
+  font-weight: 700;
 }
 
 .section-subtitle {
   font-size: var(--fs-lg);
-  color: var(--color-gray-800);
-  font-weight: 400;
+  color: var(--color-accent);
+  font-weight: 500;
 }
 
 .divider {
@@ -604,7 +610,7 @@ li {
    ======================================== */
 .hero {
   padding: calc(var(--header-height) + var(--spacing-12)) 0 var(--spacing-16);
-  background: linear-gradient(180deg, var(--color-primary-bg) 0%, var(--color-gray-50) 100%);
+  background: linear-gradient(180deg, var(--color-secondary-bg) 0%, var(--color-gray-50) 100%);
 }
 
 .hero-grid {

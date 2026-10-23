@@ -4,59 +4,52 @@ const CATEGORIAS_DESCARTE = [
   {
     id: 'celulares',
     nome: 'Celulares e Tablets',
-    icone: './assets/celular-sem-fundo.png',
-    descricao: 'Smartphones, tablets, carregadores e acessórios',
-    preparo: 'Remova conta Google/iCloud, faça backup, retire chip e cartão SD'
+    icone: './assets/celular.png',
+    descricao: 'Smartphones, tablets, carregadores, cabos USB',
+    preparo: 'Faça backup dos dados, remova contas Google e iCloud, retire chip e cartão SD, desbloqueie a tela'
   },
   {
     id: 'computadores',
     nome: 'Computadores e Notebooks',
-    icone: './assets/teclado.jpg',
-    descricao: 'CPUs, notebooks, monitores, teclados, mouses',
-    preparo: 'Faça backup, formate o disco, remova senhas de BIOS'
+    icone: './assets/notebook.png',
+    descricao: 'CPUs, notebooks, netbooks',
+    preparo: 'Faça backup dos dados, formate o disco ou destrua fisicamente, remova senhas de BIOS e HD'
   },
   {
     id: 'perifericos',
     nome: 'Periféricos e Acessórios',
-    icone: './assets/fone de ouvido.jpg',
-    descricao: 'Fones, cabos, carregadores, webcams, pen drives',
-    preparo: 'Agrupe cabos, teste funcionamento, separe por tipo'
+    icone: './assets/fone_de_ouvido.png',
+    descricao: 'Teclados, mouses, cabos de força, fones de ouvido, headsets, webcams, pen drives, HDs externos, hubs, adaptadores',
+    preparo: 'Teste o funcionamento, agrupe cabos com elásticos, separe por tipo, limpe conectores'
   },
   {
     id: 'baterias',
     nome: 'Baterias e Pilhas',
-    icone: './assets/pilha.png',
-    descricao: 'Pilhas comuns, baterias de celular, power banks',
-    preparo: 'Isole terminais com fita adesiva, separe por tipo'
+    icone: './assets/pilha2.png',
+    descricao: 'Pilhas alcalinas AA, AAA, C, D, 9V, baterias de íon-lítio de celular e notebook, power banks, baterias de UPS de pequeno porte',
+    preparo: 'Isole terminais com fita adesiva, separe por química alcalina, lítio e níquel, não misture tipos diferentes'
   },
   {
     id: 'monitores',
     nome: 'Monitores e TVs',
-    icone: './assets/monitor-sem-fundo.png',
-    descricao: 'Monitores LCD/LED, TVs de tubo, plasma, LED',
-    preparo: 'Proteja a tela com papelão, não quebre o tubo (CRT)'
+    icone: './assets/monitor.png',
+    descricao: 'Monitores LCD, LED, OLED, TVs LED, LCD, Plasma, monitores CRT de tubo, informe o tipo no ponto',
+    preparo: 'Proteja a tela com papelão ou plástico bolha, não quebre tubo CRT por conter vácuo e chumbo, embale bem para transporte'
   },
   {
     id: 'controles',
     nome: 'Controles Remotos',
-    icone: './assets/controle_r.jpg',
-    descricao: 'Controles de TV, ar-condicionado, portões, brinquedos',
-    preparo: 'Retire pilhas, teste botões, agrupe com o aparelho'
+    icone: './assets/controle.png',
+    descricao: 'Controles de TV, ar-condicionado, portão eletrônico, home theater, controles remotos de brinquedos eletrônicos, apresentadores wireless',
+    preparo: 'Retire as pilhas para evitar vazamento, teste botões, limpe contatos se oxidados, agrupe com o aparelho se possível'
   },
   {
     id: 'impressoras',
     nome: 'Impressoras e Scanners',
-    icone: './assets/carregador.jpg',
-    descricao: 'Impressoras jato de tinta, laser, multifuncionais',
-    preparo: 'Retire cartuchos/toners, remova papel, proteja cabeçote'
+    icone: './assets/impressora.jpg',
+    descricao: 'Impressoras jato de tinta, laser, tanque de tinta, multifuncionais, scanners de mesa, plotters',
+    preparo: 'Retire cartuchos e toners para reciclagem separada, remova papel, trave cabeçote em jato de tinta, proteja vidro do scanner'
   },
-  {
-    id: 'audio',
-    nome: 'Equipamentos de Áudio',
-    icone: './assets/fone de ouvido.jpg',
-    descricao: 'Caixas de som, amplificadores, microfones, toca-fitas',
-    preparo: 'Desconecte cabos, proteja cones, separe cabos de força'
-  }
 ];
 
 const CATEGORIAS_NAO_ACEITAS = [
